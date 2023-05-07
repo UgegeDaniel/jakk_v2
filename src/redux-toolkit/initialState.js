@@ -20,8 +20,9 @@ const initialState = {
     isLoading: false,
     showError: false,
     testParams: {
-        subject: '',
-        year: ''
+        subjectId: '',
+        year: '',
+        chosenSubject: ''
     },
     isSignIn: false,
     testStarted: false

@@ -1,5 +1,6 @@
 import { object, string } from 'yup';
 import { signUpUser, signInUser } from '../../redux-toolkit/features/userSlice';
+import { urls } from '../../utils';
 
 const initialValues = {
     name: '',
@@ -13,11 +14,11 @@ const validationSchema = (signIn) => object({
     password: string().required("Please provide a password")
 })
 const signInSuccess = (dispatch, values, navigate) => {
-    const signInParams = {endpoint: '/users/signin', postBody: values, extract: 'user', navigate}
+    const signInParams = {...urls.signin(navigate), postBody: values}
     dispatch(signInUser(signInParams))
 }
 const signUpSuccess = (dispatch, values, navigate) => {
-    const signUpParams = {endpoint: '/users/signup', postBody: values, extract: 'user', navigate}
+    const signUpParams = {...urls.signup(navigate), postBody: values}
     dispatch(signUpUser(signUpParams))
 }
 const submitHandler = (dispatch, isSignIn, navigate) => (values, onSubmitParams) => {

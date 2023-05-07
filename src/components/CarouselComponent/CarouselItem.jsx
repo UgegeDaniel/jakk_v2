@@ -1,8 +1,8 @@
+import React from 'react';
 import { useSelector } from 'react-redux';
 import { Carousel } from 'react-bootstrap';
 import FormComponent from '../FormComponent/FormComponent';
 import ModalComponent from '../ModalComponent/ModalComponent';
-import React from 'react';
 
 const CarouselItem = React.forwardRef((props, ref) => {
     const isSignIn = useSelector((state) => state.userState.isSignIn)

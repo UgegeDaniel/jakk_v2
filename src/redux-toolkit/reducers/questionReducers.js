@@ -1,9 +1,10 @@
 const questionReducers = {
-    selectSubject: (state, action) => {
-        state.testParams.subject = action.payload;
+    setSubjectId: (state, action) => {
+        state.testParams.chosenSubject = action.payload.chosenSubject;
+        state.testParams.subjectId = action.payload.chosenId;
     },
     selectYear: (state, action) => {
-        state.testParams.year = action.payload;
+        state.testParams.chosenYear = action.payload;
     },
 } 
 export default questionReducers;

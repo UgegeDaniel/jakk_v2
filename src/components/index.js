@@ -8,3 +8,7 @@ export { default as Timer } from './TestPageContent/Timer';
 export { default as TestParamsContent } from './TestParamsContent/TestParamsContent';
 export { default as ToastNotification } from './ToastNotification/ToastNotification';
 export { default as NavbarComponent } from './NavbarComponent/NavbarComponent';
+export { default as ModalComponent } from './ModalComponent/ModalComponent';
+export { default as FormComponent } from './FormComponent/FormComponent';
+export { default as Loader } from './Loaders/Loader';
+export { default as AccordionComponent } from './AccordionComponent/AccordionComponent';

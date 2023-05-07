@@ -1,10 +1,10 @@
 import { Accordion, Card } from "react-bootstrap"
 
-const AccordionComponent = ({ children, headerTxt, eventKey, CustomToggler }) => {
+const AccordionComponent = ({ children, headerTxt, eventKey, CustomToggler, extraProp}) => {
     return CustomToggler ? (
         <Card>
             <Card.Header>
-                <CustomToggler eventKey={eventKey}>{headerTxt}</CustomToggler>
+                <CustomToggler eventKey={eventKey} extraProp={extraProp}>{headerTxt}</CustomToggler>
             </Card.Header >
             <Accordion.Collapse eventKey={eventKey}>
                 <Card.Body>{children}</Card.Body>

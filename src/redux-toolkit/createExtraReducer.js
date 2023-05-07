@@ -8,13 +8,17 @@ export const createExtraReducer = (builder, asyncMethod, stateToUpdate) => {
         state.isLoading = false
         if (stateToUpdate === 'user' && responseData) {
             localStorage.setItem("user", JSON.stringify(responseData));
-            state.notifications.push({style: 'success', msg: 'Sign in successfully'})
+            state.notifications.push({ style: 'success', msg: 'Sign in successfully' })
             state.showNotification = true;
         }
         state[stateToUpdate] = responseData;
-        state.notifications = Array.isArray(responseError) || responseError
-            ? responseError.map((msg) => ({ style: 'danger', msg }))
-            : [...state.notifications, { style: 'danger', msg: responseError }];
+        console.log({ responseData, responseError })
+        if (responseError) {
+            state.notifications = Array.isArray(responseError)
+                ? responseError.map((msg) => ({ style: 'danger', msg }))
+                : [...state.notifications, { style: 'danger', msg: responseError }];
+            state.showNotification = true;
+        }
     })
     builder.addCase(asyncMethod.rejected, (state, action) => {
         state.isLoading = false

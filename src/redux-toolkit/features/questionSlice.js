@@ -12,7 +12,7 @@ export const questionSlice = createSlice({
     name: 'question',
     initialState,
     reducers: {
-        selectSubject: questionReducers.selectSubject,
+        setSubjectId: questionReducers.setSubjectId,
         selectYear: questionReducers.selectYear
     },
     extraReducers: (builder) => {
@@ -22,6 +22,6 @@ export const questionSlice = createSlice({
     },
 })
 
-export const { selectSubject, selectYear } = questionSlice.actions;
+export const { setSubjectId, selectYear } = questionSlice.actions;
 
 export default questionSlice.reducer

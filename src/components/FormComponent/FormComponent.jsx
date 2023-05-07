@@ -22,6 +22,8 @@ const FormComponent = () => {
         dispatch(updateFormErrors([nameError, emailError, passwordError]))
     }, [dispatch, emailError, nameError, passwordError])
 
+    const handleBtnClick = () => dispatch(updateFormErrors([nameError, emailError, passwordError]))
+
     return (
         <Form
             onSubmit={formik.handleSubmit}
@@ -37,8 +39,7 @@ const FormComponent = () => {
             <Input type="password" name="password" formik={formik} />
             <Btn
                 txt={isSignIn ? 'Sign In' : 'Sign Up'}
-                disabled={formik.isSubmitting}
-                onClick={() => dispatch(updateFormErrors([nameError, emailError, passwordError]))}
+                onClick={handleBtnClick}
             />
         </Form >
     )
