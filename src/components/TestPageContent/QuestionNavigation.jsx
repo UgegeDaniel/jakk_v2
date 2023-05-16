@@ -1,38 +1,58 @@
-import { Button, Card } from "react-bootstrap";
+import { Button } from "react-bootstrap";
 import ModalComponent from "../ModalComponent/ModalComponent";
+import { nextQuestion, prevQuestion, jumpToIndex, saveUserScore, showModal } from '../../redux-toolkit/features/questionSlice'
+import { useDispatch, useSelector } from "react-redux";
+import ResultCard from "./ResultCard";
+import styles from '../../styles'
+import useQuestions from "./useQuestion";
+import { urls } from "../../utils";
 
-const testEnd = () => {
-    //show notification 
-    //stop timer (set timer initial value)
-    //compare questions answered with answers
-    //show result modal
-}
+const QuestionNavigation = () => {
+    const dispatch = useDispatch();
+    const state = useSelector((state) => state.questionState);
+    const testSubmitted = useSelector((state) => state.questionState.testSubmitted);
+    const { length, answered } = useQuestions()
+    return (
+        <div className={styles.flexCenter}>
+            <Button variant="outline-primary" className="mx-2"
+                onClick={() => dispatch(prevQuestion())}
+            >
+                Prev
+            </Button>
+            <Button variant="outline-primary" className="mx-2"
+                onClick={() => dispatch(nextQuestion())}
+            >
+                Next
+            </Button>
 
-const QuestionNavigation = ({setCurrentQuestion, questions}) => {
-    const prevQuestion = () => {
-        setCurrentQuestion((curr) => {
-            if(curr === 0) return curr
-            return curr - 1
-        })
-    }
-    const nextQuestion = () => {
-        setCurrentQuestion((curr) => {
-            if(curr === questions.length - 1) return curr
-            return curr + 1
-        })
-    }
-    return(
-    <div className="p-3 d-flex align-items-center justify-content-center flex-wrap">
-        <Card.Link onClick={()=> prevQuestion()}>Prev</Card.Link>
-        <Card.Link onClick={()=> nextQuestion()}>Next</Card.Link>
-        <ModalComponent openModalTxt="1. 2. 3. ...40." modalHeaderTxt="Jump To A Number" btnVariant="link">
-            {questions.map((item, index) =>
-                <Button key={index} className="m-1 rounded-circle"
-                onClick={() => setCurrentQuestion(index)}
-                >{index + 1}</Button>
+            <ModalComponent
+                openModalTxt={testSubmitted ? 'See Result' : 'Finish and Submit'}
+                modalHeaderTxt="Test Submitted"
+                btnVariant="primary"
+                onBtnClick={() => {
+                    if (!testSubmitted) {
+                        dispatch(saveUserScore(urls.saveScore(state)))
+                    }
+                    if (testSubmitted) {
+                        dispatch(showModal(true))
+                    }
+                }}
+            >
+                <ResultCard />
+            </ModalComponent>
+
+            <div>{[...Array(length).keys()].map((item) =>
+                <Button
+                    key={item}
+                    className="m-1 rounded-circle"
+                    variant={answered(item) ? "primary" : "outline-primary"}
+                    onClick={() => dispatch(jumpToIndex(item))}
+                >
+                    {item + 1}
+                </Button>
             )}
-        </ModalComponent>
-        <Button variant="primary" size="sm">Finish and Submit</Button>
-    </div>
-)}
+            </div>
+        </div>
+    )
+}
 export default QuestionNavigation;

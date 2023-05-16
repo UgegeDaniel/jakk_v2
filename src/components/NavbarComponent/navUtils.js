@@ -5,7 +5,7 @@ import { BsBook } from 'react-icons/bs';
 
 export const navigations = [
     { link: '/', Icon: BiHomeAlt2, linkTxt: "Home" },
-    { link: '/about', Icon: CgDetailsMore, linkTxt: "About" },
     { link: '/dashboard', Icon: RxDashboard, linkTxt: "Dashboard" },
     { link: '/testparams', Icon: BsBook, linkTxt: "Take A Test" },
+    { link: '/about', Icon: CgDetailsMore, linkTxt: "About" },
 ]

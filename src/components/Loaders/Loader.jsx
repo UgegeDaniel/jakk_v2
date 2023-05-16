@@ -7,7 +7,6 @@ const Loader = () => {
             animation="border"
             size="sm"
             role="status"
-            aria-hidden="true"
         />
     )
 }

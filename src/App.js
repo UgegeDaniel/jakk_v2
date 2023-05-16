@@ -2,7 +2,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import ThemeProvider from 'react-bootstrap/ThemeProvider'
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { NavbarComponent, ToastNotification } from './components'
-import {Home, About, Dashboard, TestPage, ErrorPage, TestParams} from './pages';
+import { Home, About, Dashboard, TestPage, ErrorPage, TestParams } from './pages';
 import { useSelector } from 'react-redux';
 import './index.css';
 

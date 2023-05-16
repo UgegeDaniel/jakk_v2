@@ -1,26 +1,26 @@
-import React from 'react'
-import { Button, Card } from 'react-bootstrap'
+import { Card } from 'react-bootstrap'
+import { FaUserGraduate } from 'react-icons/fa'
 import { Link } from 'react-router-dom'
+import styles from '../../styles'
+import Btn from '../Btn/Btn'
 
 const ProfileCard = ({ user }) => {
     return (
-        <div className="d-flex mt-4 mb-3 align-items-start">
-            <img
-                src={require("../../assets/images/dashboard/face3.jpg")}
-                className="img-sm rounded-circle mr-3"
-                alt="face"
-            />
-            <div className="mb-0 flex-grow">
-                <Card.Header className="p-3 d-flex align-items-center justify-content-center flex-wrap">
-                    <span className="font-weight-bold lead text-primary">{user.name} </span>
-                    <span className="ml-auto font-weight-bold font-italic">{user.email}</span></Card.Header>
-                <p className="mb-0 font-weight-light font-italic">
-                    “Knowing yourself is the beginning of all wisdom.”
-                    <span className="font-italic text-primary text-sm-right ml-5">
-                        Aristotle
-                    </span>
-                </p>
-                <Link to='/testparams'><Button className="mt-3 ml-2">Take A Test</Button></Link>
+        <div className={`${styles.flexColCenter} mb-3`}>
+            <div className={`${styles.flexCenter} p-3`}>
+                <FaUserGraduate className={styles.profileFace} />
+                <div className="mb-0 flex-grow">
+                    <Card.Header className={`${styles.flexCenter} p-3`}>
+                        <span className={styles.boldPriTxt}>{user.name} </span>
+                        <span className={styles.boldItalicsTxt}>{user.email}</span>
+                    </Card.Header>
+                    <Link to='/testparams'>
+                        <Btn
+                            txt="Take A Test"
+                            size="mt-3"
+                        />
+                    </Link>
+                </div>
             </div>
         </div>
     )

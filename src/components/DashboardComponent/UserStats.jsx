@@ -11,13 +11,16 @@ const UserStats = () => {
   return (
     <Row>
       <Col md={3} className="border border-secondary">
-        {userHistory?.length > 0
-          ? <Pie data={pieDataToDisplay} options={pieOptions} className="mh-100"/>
+        {(userHistory?.length > 0 || !userHistory)
+          ? <Pie data={pieDataToDisplay} options={pieOptions} className="mh-100" />
           : <p className="text-primary">No User History to Display</p>
         }
       </Col>
       <Col md={9} className="border border-secondary">
-        <Bar data={barDataToDisplay} options={barOptions} className="w-100"/>
+        {(userHistory?.length > 0 || !userHistory)
+          ? <Bar data={barDataToDisplay} options={barOptions} className="w-100" style={{ minHeight: "200px"}}/>
+          : <p className="text-primary">No User History to Display</p>
+        }
       </Col>
     </Row>
   )

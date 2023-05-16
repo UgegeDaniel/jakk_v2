@@ -13,21 +13,20 @@ const NavbarComponent = () => {
             <Navbar bg="dark" variant="dark" collapseOnSelect expand="lg">
                 <Container>
                     <Navbar.Brand href="/"> Jakk </Navbar.Brand>
-                    {user
-                        ? <Navbar.Text>
-                            Signed in as: <span className="text-primary">{user.email}</span>
-                        </Navbar.Text>
-                        :
+                    {!user &&
                         <ModalComponent
                             openModalTxt="Sign Up /Sign In"
                             modalHeaderTxt={isSignIn ? "Sign In" : "Sign Up"}
-                        >
-                            <FormComponent />
-                        </ModalComponent>
+                        ><FormComponent /></ModalComponent>
                     }
-                    <Navbar.Toggle> <TbMenu2 /> </Navbar.Toggle>
-                    <NavItems user={user} />
+                    <Navbar.Toggle><TbMenu2 /></Navbar.Toggle>
+                    <NavItems />
                 </Container>
+                {user
+                    && <Navbar.Text>
+                        Signed in as: <span className="text-primary">{user?.email}</span>
+                    </Navbar.Text>
+                }
             </Navbar>
         </>
     );

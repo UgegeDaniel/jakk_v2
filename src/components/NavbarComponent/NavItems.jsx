@@ -1,11 +1,13 @@
-import { useDispatch } from 'react-redux';
-import { Button, Nav, Navbar } from 'react-bootstrap';
+import { useDispatch, useSelector } from 'react-redux';
+import { Nav, Navbar } from 'react-bootstrap';
 import NavItem from './NavItem';
 import { navigations } from './navUtils';
 import { signOut } from '../../redux-toolkit/features/userSlice';
+import Btn from '../Btn/Btn';
 
-const NavItems = ({ user }) => {
+const NavItems = () => {
     const dispatch = useDispatch();
+    const user = useSelector((state) => state.userState.user);
     return (
         <Navbar.Collapse id="responsive-navbar-nav" className="justify-content-end">
             <Nav className="">
@@ -13,13 +15,12 @@ const NavItems = ({ user }) => {
                     <NavItem key={index} link={navItem.link} Icon={navItem.Icon} linkTxt={navItem.linkTxt} />
                 )}
                 {user &&
-                    <Button
+                    <Btn
                         variant="primary"
-                        type="submit"
-                        className="btn btn-primary btn-sm"
-                        onClick={() => dispatch(signOut())}>
-                        Sign Out
-                    </Button>
+                        txt="Sign Out"
+                        size="btn btn-primary btn-sm"
+                        onClick={() => dispatch(signOut())}
+                    />
                 }
             </Nav>
         </Navbar.Collapse>

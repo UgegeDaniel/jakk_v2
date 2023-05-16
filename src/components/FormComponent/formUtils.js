@@ -2,12 +2,6 @@ import { object, string } from 'yup';
 import { signUpUser, signInUser } from '../../redux-toolkit/features/userSlice';
 import { urls } from '../../utils';
 
-const initialValues = {
-    name: '',
-    email: '',
-    password: '',
-};
-
 const validationSchema = (signIn) => object({
     name: signIn ? string() : string().required("Please provide a name"),
     email: string().required("Please provide an email address").email("Please provide a valid email address"),
@@ -27,8 +21,8 @@ const submitHandler = (dispatch, isSignIn, navigate) => (values, onSubmitParams)
     onSubmitParams.resetForm();
 }
 
-const formParams = (isSignIn, dispatch, navigate) => ({
-    initialValues,
+const formParams = (isSignIn, dispatch, navigate, formData) => ({
+    initialValues: formData,
     validationSchema: validationSchema(isSignIn),
     onSubmit: submitHandler(dispatch, isSignIn, navigate)
 });

@@ -1,36 +1,32 @@
-import { useSelector } from 'react-redux';
 import { Carousel } from 'react-bootstrap';
-import { ModalComponent, FormComponent } from '../../components';
-import img1 from '../../assets/images/home/img1.jpg'
-import img2 from '../../assets/images/home/img2.jpg'
-import img3 from '../../assets/images/home/img3.jpg'
+import { homePageTxt } from '../../utils';
+import CarouselText from './CarouselText';
+import styles from '../../styles';
+// import ModalComponent from '../ModalComponent/ModalComponent';
+// import FormComponent from '../FormComponent/FormComponent';
+// import { useSelector } from 'react-redux';
 
 const CarouselComponent = () => {
-    const isSignIn = useSelector((state) => state.userState.isSignIn)
-
+    // const user = useSelector((state) => state.userState.user)
+    // const isSignIn = useSelector((state) => state.userState.isSignIn)
     return (
-        <Carousel>
-            {[img1, img2, img3].map((img, index) => (
-                <Carousel.Item className='img-container' key={index}>
-                    <img
-                        className="img overlay"
-                        src={img}
-                        alt="First slide"
-                    />
-                    <div className="overlay-dark"></div>
-                    <Carousel.Caption>
-                        <h3>First slide label</h3>
-                        <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
-                        <ModalComponent
-                            openModalTxt="Sign Up /Sign In"
-                            modalHeaderTxt={isSignIn ? "Sign In" : "Sign Up"}
-                        >
-                            <FormComponent />
-                        </ModalComponent>
-                    </Carousel.Caption>
+        <Carousel fade controls={false} indicators={false}>
+            {homePageTxt.map((content, index) => (
+                <Carousel.Item className={styles.flexColCenter}
+                    key={index}
+                >
+                    <CarouselText content={content} />
                 </Carousel.Item>
-            ))}
-        </Carousel>
+            ))
+            }
+            {/* {!user &&
+                <ModalComponent
+                    openModalTxt="Sign Up /Sign In"
+                    modalHeaderTxt={isSignIn ? "Sign In" : "Sign Up"}
+                    ChildComponent={FormComponent}
+                />
+            } */}
+        </Carousel >
 
     )
 }

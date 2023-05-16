@@ -1,26 +1,45 @@
+
+const stateSpecificExtraReducers = {
+    user: (state, responseData) => {
+        localStorage.setItem("user", JSON.stringify(responseData));
+        state.notifications.push({ style: 'success', msg: 'Sign in successfully' })
+    },
+    questions: (state, responseData) => {
+        state.notifications.push({ style: 'success', msg: `Successuully fetched ${responseData.length} questions` })
+        state.timer = true;
+        state.testSubmitted = false;
+    },
+    newScore: (state) => {
+        state.testSubmitted = true;
+        state.timer = false;
+        state.modal = true;
+    }
+}
+
 export const createExtraReducer = (builder, asyncMethod, stateToUpdate) => {
     builder.addCase(asyncMethod.pending, (state) => {
         state.isLoading = true
     })
     builder.addCase(asyncMethod.fulfilled, (state, action) => {
-        console.log('success')
         const { responseData, responseError } = action.payload;
         state.isLoading = false
-        if (stateToUpdate === 'user' && responseData) {
-            localStorage.setItem("user", JSON.stringify(responseData));
-            state.notifications.push({ style: 'success', msg: 'Sign in successfully' })
-            state.showNotification = true;
-        }
+        const extraReducer = stateSpecificExtraReducers[stateToUpdate]
+        extraReducer && extraReducer(state, responseData)
         state[stateToUpdate] = responseData;
-        console.log({ responseData, responseError })
         if (responseError) {
-            state.notifications = Array.isArray(responseError)
-                ? responseError.map((msg) => ({ style: 'danger', msg }))
-                : [...state.notifications, { style: 'danger', msg: responseError }];
+            const hasErrorMsg = state.notifications.find((notification) => notification.msg === responseError)
+            if (Array.isArray(responseError)) {
+                state.notifications = responseError.map((msg) => ({ style: 'danger', msg }))
+            }
+            if (!hasErrorMsg) {
+                state.notifications = [{ style: 'danger', msg: responseError }];
+            }
             state.showNotification = true;
         }
     })
     builder.addCase(asyncMethod.rejected, (state, action) => {
         state.isLoading = false
+        state.notifications = [...state.notifications, { style: 'danger', msg: action.payload }];
+        state.showNotification = true;
     })
 }

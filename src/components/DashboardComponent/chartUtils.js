@@ -1,23 +1,25 @@
 // import { milliSecsToMoment } from '../../utils';
-import { chartColors } from "../../utils";
+import { chartColors, chartOptions, getChartLabels } from "../../utils";
 
-export const barOptions = {
-  responsive: true,
-  plugins: {
-    legend: {
-      display: false,
-    },
-    title: {
-      display: true,
-      text: 'Student progress per subject with time'
-    }
+export const barOptions = chartOptions({
+  txt: 'Student progress per subject with time',
+  legend: {
+    display: false
   }
-}
+})
+
+export const pieOptions = chartOptions({
+  txt: 'Student progress per subject with time',
+  legend: {
+    display: true,
+    position: 'bottom',
+  }
+})
 
 export const barData = (userHistory) => {
-  const subjects = Array.from(new Set(userHistory.map((historyItem) => historyItem.name)));
+  const subjects = getChartLabels(userHistory);
   return {
-    labels: subjects,
+    labels: getChartLabels(userHistory),
     datasets: userHistory.map((historyItem, index) => {
       return {
         label: subjects[index],
@@ -32,13 +34,13 @@ export const barData = (userHistory) => {
 }
 
 export const pieData = (userHistory) => {
-  const chartLabels = Array.from(new Set(userHistory.map((historyItem) => historyItem.name)));
+  const chartLabels = getChartLabels(userHistory)
   const chartData = chartLabels.map(currSubject => {
     const numSubject = chartLabels.filter(sub => sub === currSubject)
     return numSubject.length * 100 / chartLabels.length
   })
   return {
-    labels: chartLabels,
+    labels: getChartLabels(userHistory),
     datasets: [
       {
         label: "Number of Tests Taken Per Subject",
@@ -50,18 +52,4 @@ export const pieData = (userHistory) => {
     ],
   }
 };
-
-export const pieOptions = {
-  responsive: true,
-  plugins: {
-    legend: {
-      display: true,
-      position: 'bottom',
-    },
-    title: {
-      display: true,
-      text: 'Distribution of subjects'
-    }
-  }
-}
 

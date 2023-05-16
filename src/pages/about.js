@@ -3,8 +3,10 @@ import { PageWrapper, AboutPageContent } from "../components/";
 
 const About = () => {
     return (
-        <PageWrapper pageName="About" Icon={CgDetailsMore}>
-            <AboutPageContent />
+        <PageWrapper pageName="About" Icon={CgDetailsMore} featureTxt="">
+            <div style={{ maxWidth: "80%", margin: "0 auto" }}>
+                <AboutPageContent />
+            </div>
         </PageWrapper>
     )
 }

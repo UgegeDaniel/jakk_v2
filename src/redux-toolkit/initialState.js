@@ -1,31 +1,50 @@
 import { existingUser } from '../utils';
 
 const initialState = {
+    //USER
+    user: existingUser ? existingUser.user : null,
+    userHistory: [],
+
+    //QUESTIONS
     allSubjects: [],
     years: [],
-    user: existingUser ? existingUser.user : null,
     questions: [],
-    userHistory: [],
+    
+    //FORM
     formData: {
         name: "",
         email: "",
         password: ""
     },
-    userScore: {
-        subject: "chemistry",
-        score: 75.75
-    },
+    isSignIn: false,
+
+    //NOTIFICATIONS
     notifications: [],
     showNotification: false,
     isLoading: false,
+
     showError: false,
+
+    //TEST PARAMETERS
     testParams: {
         subjectId: '',
-        year: '',
+        chosenYear: '',
         chosenSubject: ''
     },
-    isSignIn: false,
-    testStarted: false
+    testStarted: false,
+    testSubmitted: false,
+
+    //ONGOING TEST STATE
+    currentIndex: 0,
+    timer: false,
+    result: {
+        attempted: 0,
+        correct: 0,
+        score: 0
+    },
+    answeredQuestions: [],
+
+    modal: false
 }
 
 export default initialState;

@@ -1,15 +1,18 @@
 import { useDispatch, useSelector } from "react-redux";
-import { Accordion } from "react-bootstrap";
-import { ModalComponent, AccordionComponent, Loader } from "../index";
+import { ModalComponent, Btn } from "../index";
 import { getAllSubjects } from "../../redux-toolkit/features/questionSlice";
-import { capitalizeFirstLetter, urls } from "../../utils";
-import ToggeleSubjectAccordion from "./ToggeleSubjectAccordion";
-import YearsForSubject from "./YearsForSubject";
+import { urls } from "../../utils";
+import SubjectsSelection from "./SubjectSelection";
 
 const TestParamsBody = () => {
     const allSubjects = useSelector((state) => state.questionState.allSubjects);
     const dispatch = useDispatch();
     const fetchSubjects = () => dispatch(getAllSubjects(urls.getAllSubjects))
+
+    if (!allSubjects) return <div className="text-danger lead font-weight-bold">
+        Couldn't fetch Subjects
+        <Btn onClick={fetchSubjects} txt="Try Again" size="mx-2 btn-sm" />
+    </div>
 
     return (
         <ModalComponent
@@ -18,20 +21,8 @@ const TestParamsBody = () => {
             btnVariant="outline-primary"
             onBtnClick={fetchSubjects}
         >
-            <Accordion>
-                {allSubjects.length === 0 ? <Loader /> : allSubjects.map((subject, index) =>
-                    <AccordionComponent
-                        eventKey={subject?.subjects_uid}
-                        headerTxt={capitalizeFirstLetter(subject?.name)}
-                        key={subject?.subjects_uid}
-                        CustomToggler={ToggeleSubjectAccordion}
-                        extraProp={{ subjectId: subject?.subjects_uid }}
-                    >
-                        <YearsForSubject subjectName={subject?.name} />
-                    </AccordionComponent>
-                )}
-            </Accordion>
-        </ModalComponent >
+            <SubjectsSelection />
+        </ModalComponent>
     )
 }
 export default TestParamsBody;

@@ -7,6 +7,10 @@ const store = configureStore({
         userState: userReducer,
         questionState: questionReducer
     },
+    middleware: getDefaultMiddleware =>
+    getDefaultMiddleware({
+      serializableCheck: false,
+    }),
 })
 
 export default store;

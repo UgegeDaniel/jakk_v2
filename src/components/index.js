@@ -12,3 +12,4 @@ export { default as ModalComponent } from './ModalComponent/ModalComponent';
 export { default as FormComponent } from './FormComponent/FormComponent';
 export { default as Loader } from './Loaders/Loader';
 export { default as AccordionComponent } from './AccordionComponent/AccordionComponent';
+export { default as Btn } from './Btn/Btn';

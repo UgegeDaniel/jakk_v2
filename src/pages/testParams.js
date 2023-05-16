@@ -3,7 +3,7 @@ import { PageWrapper, TestParamsContent } from '../components';
 
 const TestParams = () => {
     return (
-        <PageWrapper pageName="Select Test Params" Icon={BsBook}>
+        <PageWrapper pageName="Select Test Parameters" Icon={BsBook}>
             <TestParamsContent />
         </PageWrapper>
     )

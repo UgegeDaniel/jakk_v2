@@ -1,27 +1,51 @@
+import Accordion from 'react-bootstrap/Accordion';
+import { useAccordionButton } from 'react-bootstrap/AccordionButton';
+import Card from 'react-bootstrap/Card';
 import { useDispatch, useSelector } from "react-redux";
-import { useAccordionButton } from "react-bootstrap";
 import { setSubjectId, getYearsForSubject } from "../../redux-toolkit/features/questionSlice";
-import Btn from "../Btn/Btn";
 import { urls } from "../../utils";
 
-function ToggeleSubjectAccordion({ eventKey, extraProp, children }) {
+function CustomToggle({ children, eventKey }) {
+    const dispatch = useDispatch();
     const testParams = useSelector((state) => state.questionState.testParams);
     const { chosenSubject } = testParams
-    const dispatch = useDispatch();
-    const { subjectId: chosenId } = extraProp
-    const decoratedOnClick = useAccordionButton(eventKey, () => {
-        dispatch(setSubjectId({chosenSubject: children, chosenId}))
-        const fetchYearsParams = urls.getYearsForSubject(chosenId);
-        dispatch(getYearsForSubject(fetchYearsParams))
-    });
+
+    const handleClick = () => {
+        dispatch(setSubjectId({ chosenSubject: children, chosenId: eventKey }))
+        dispatch(getYearsForSubject(urls.getYearsForSubject(eventKey)))
+    }
+
+    const decoratedOnClick = useAccordionButton(eventKey, () =>
+        handleClick(),
+    );
 
     return (
-        <Btn
-            size="btn-block"
+        <button
             onClick={decoratedOnClick}
-            txt={children}
-            variant={children === chosenSubject ? "primary" : "outline-primary"}
-        />
+            className={`btn btn-block ${chosenSubject === children ? 'btn-primary' : 'btn-outline-primary'}`}
+        >
+            {children}
+        </button>
     );
 }
+
+export function ToggeleSubjectAccordion({ children, eventKey, headerTxt }) {
+    const testParams = useSelector((state) => state.questionState.testParams);
+    const { subjectId } = testParams
+    return (
+        <Accordion>
+            <Card>
+                <Card.Header>
+                    <CustomToggle eventKey={eventKey}>
+                        {headerTxt}
+                    </CustomToggle>
+                </Card.Header>
+                {(subjectId === eventKey) && <Accordion.Collapse eventKey={eventKey}>
+                    <Card.Body>{children}</Card.Body>
+                </Accordion.Collapse>}
+            </Card>
+        </Accordion>
+    );
+}
+
 export default ToggeleSubjectAccordion;

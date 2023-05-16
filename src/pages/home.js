@@ -4,7 +4,9 @@ import { CarouselComponent, PageWrapper } from '../components';
 function Home() {
     return (
         <PageWrapper pageName="Home" Icon={BiHomeAlt2}>
-            <CarouselComponent />
+            <div style={{ maxWidth: "80%", margin: "0 auto" }}>
+                <CarouselComponent />
+            </div>
         </PageWrapper>
     );
 }
