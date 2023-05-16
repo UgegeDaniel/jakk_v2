@@ -9,6 +9,6 @@ const config = {
 };
 
 export const baseUrl = process.env.NODE_ENV !== 'production'
-    ? 'apis-production-57cb.up.railway.app/api'
+    ? process.env.REACT_APP_REMOTE_API_URL
     : 'http://localhost:5000/api';
 export default config
