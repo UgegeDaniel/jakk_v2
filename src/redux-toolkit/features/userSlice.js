@@ -6,7 +6,6 @@ import userReducers from '../reducers/userReducers';
 
 export const signInUser = createAsyncThunk('user/signIn', axiosRequestHandler);
 export const signUpUser = createAsyncThunk('user/signUp', axiosRequestHandler);
-// export const saveUserHistory = createAsyncThunk('user/saveHistory', axiosRequestHandler);
 export const getUserHistory = createAsyncThunk('user/getHistory', axiosRequestHandler);
 
 export const userSlice = createSlice({
@@ -22,7 +21,6 @@ export const userSlice = createSlice({
     extraReducers: (builder) => {
         createExtraReducer(builder, signInUser, 'user');
         createExtraReducer(builder, signUpUser, 'user');
-        // createExtraReducer(builder, saveUserHistory, 'userHistory');
         createExtraReducer(builder, getUserHistory, 'userHistory');
     },
 })

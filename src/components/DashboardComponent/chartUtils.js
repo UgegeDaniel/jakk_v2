@@ -20,7 +20,7 @@ export const barData = (userHistory) => {
   const subjects = getChartLabels(userHistory);
   return {
     labels: getChartLabels(userHistory),
-    datasets: userHistory.map((historyItem, index) => {
+    datasets: userHistory?.map((historyItem, index) => {
       return {
         label: subjects[index],
         data: subjects.map((item, index) =>

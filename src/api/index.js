@@ -4,6 +4,7 @@ import config, { baseUrl } from './config';
 const axiosRequestHandler = async (reqParams) => {
     const { endpoint, postBody, extract, navParams } = reqParams;
     const url = `${baseUrl}${endpoint}`;
+    console.log(url)
     try {
         const { data } = postBody ? await axios.post(url, postBody, config) : await axios.get(url, config);
         const responseData = extract === 'user' ? await data : await data[extract];

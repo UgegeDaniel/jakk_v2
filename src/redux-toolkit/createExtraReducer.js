@@ -4,8 +4,7 @@ const stateSpecificExtraReducers = {
         localStorage.setItem("user", JSON.stringify(responseData));
         state.notifications.push({ style: 'success', msg: 'Sign in successfully' })
     },
-    questions: (state, responseData) => {
-        state.notifications.push({ style: 'success', msg: `Successuully fetched ${responseData.length} questions` })
+    questions: (state) => {
         state.timer = true;
         state.testSubmitted = false;
     },
