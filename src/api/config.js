@@ -7,5 +7,8 @@ const config = {
         Authorization: token
     }
 };
-export const baseUrl = 'http://localhost:5000/api';
+
+export const baseUrl = process.env.NODE_ENV !== 'production'
+    ? 'apis-production-57cb.up.railway.app/api'
+    : 'http://localhost:5000/api';
 export default config
