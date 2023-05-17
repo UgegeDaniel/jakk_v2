@@ -24,7 +24,7 @@ const NavbarComponent = () => {
                 </Container>
                 {user
                     && <Navbar.Text>
-                        Signed in as: <span className="text-primary">{user?.email}</span>
+                        Signed in as: <span className="text-primary">{user?.user.email}</span>
                     </Navbar.Text>
                 }
             </Navbar>

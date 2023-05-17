@@ -1,6 +1,5 @@
-import { existingUser } from '../utils';
-
-const token = existingUser && `Bearer ${existingUser.token}`;
+const token = JSON.parse(localStorage.getItem('user'))
+    && `Bearer ${JSON.parse(localStorage.getItem('user')).token}`;
 const config = {
     headers: {
         "Content-Type": "application/json",

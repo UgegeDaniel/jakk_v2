@@ -11,8 +11,8 @@ const ProfileCard = ({ user }) => {
                 <FaUserGraduate className={styles.profileFace} />
                 <div className="mb-0 flex-grow">
                     <Card.Header className={`${styles.flexCenter} p-3`}>
-                        <span className={styles.boldPriTxt}>{user.name} </span>
-                        <span className={styles.boldItalicsTxt}>{user.email}</span>
+                        <span className={styles.boldPriTxt}>{user?.user.name} </span>
+                        <span className={styles.boldItalicsTxt}>{user?.user.email}</span>
                     </Card.Header>
                     <Link to='/testparams'>
                         <Btn

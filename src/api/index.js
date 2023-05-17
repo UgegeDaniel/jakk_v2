@@ -8,7 +8,7 @@ const axiosRequestHandler = async (reqParams) => {
     try {
         const { data } = postBody ? await axios.post(url, postBody, config) : await axios.get(url, config);
         const responseData = extract === 'user' ? await data : await data[extract];
-        navParams && navParams.navFunc(navParams.navPath)
+        (responseData && navParams) && navParams.navFunc(navParams.navPath)
         return { responseData, responseError: null };
     } catch (err) {
         const error = err.response.data || err.message

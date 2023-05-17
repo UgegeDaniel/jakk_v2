@@ -7,20 +7,16 @@ const UserStats = () => {
   const userHistory = useSelector((state) => state.userState.userHistory)
   const pieDataToDisplay = pieData(userHistory);
   const barDataToDisplay = barData(userHistory);
-
+  console.log(userHistory)
+  if (!userHistory || userHistory?.length === 0)
+    return <p className="lead text-secondary">No User History to Display</p>
   return (
     <Row>
       <Col md={3} className="border border-secondary">
-        {(userHistory?.length > 0 || !userHistory)
-          ? <Pie data={pieDataToDisplay} options={pieOptions} className="mh-100" />
-          : <p className="text-primary">No User History to Display</p>
-        }
+        <Pie data={pieDataToDisplay} options={pieOptions} className="mh-100" />
       </Col>
       <Col md={9} className="border border-secondary">
-        {(userHistory?.length > 0 || !userHistory)
-          ? <Bar data={barDataToDisplay} options={barOptions} className="w-100" style={{ minHeight: "200px"}}/>
-          : <p className="text-primary">No User History to Display</p>
-        }
+        <Bar data={barDataToDisplay} options={barOptions} className="w-100" style={{ minHeight: "200px" }} />
       </Col>
     </Row>
   )

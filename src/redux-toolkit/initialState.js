@@ -1,8 +1,7 @@
-import { existingUser } from '../utils';
 
 const initialState = {
     //USER
-    user: existingUser ? existingUser.user : null,
+    user: JSON.parse(localStorage.getItem('user')),
     userHistory: [],
 
     //QUESTIONS

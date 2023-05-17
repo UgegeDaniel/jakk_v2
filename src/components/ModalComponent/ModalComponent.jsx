@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import BootstrapModal from 'react-bootstrap/Modal';
 import Btn from '../Btn/Btn'
 import { useDispatch, useSelector } from 'react-redux';
