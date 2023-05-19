@@ -1,23 +1,16 @@
 import { Card } from "react-bootstrap"
-import FormComponent from "../FormComponent/FormComponent"
-import ModalComponent from "../ModalComponent/ModalComponent"
-import { useSelector } from "react-redux"
+import { Link } from 'react-router-dom';
+import Btn from '../Btn/Btn';
 
 const ErrorPageContent = () => {
-    const isSignIn = useSelector((state) => state.userState.isSignIn)
     return (
         <Card>
             <Card.Body>
-                <Card.Title>Sign in Required !!!</Card.Title>
+                <Card.Title>Sorry Route Not Found</Card.Title>
                 <Card.Text>
-                    You need to Sign Up or Sign In to access this route
+                    You have requested a route that does not exist.
+                    <Link to="/"><Btn txt="Go Back Home" /></Link>
                 </Card.Text>
-                <ModalComponent
-                    openModalTxt="Sign Up /Sign In"
-                    modalHeaderTxt={isSignIn ? "Sign In" : "Sign Up"}
-                >
-                    <FormComponent />
-                </ModalComponent>
             </Card.Body>
         </Card>
     )

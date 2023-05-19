@@ -4,7 +4,8 @@ import { useSelector } from 'react-redux'
 import { FaSpellCheck } from 'react-icons/fa'
 
 const TestPage = () => {
-    const testSubmitted = useSelector((state) => state.questionState.testSubmitted)
+    const { testSubmitted } = useSelector((state) => state);
+    console.log({ testSubmitted })
     if (testSubmitted) return (
         <PageWrapper
             pageName="Correction"

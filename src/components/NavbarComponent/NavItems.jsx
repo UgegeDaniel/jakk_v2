@@ -7,21 +7,21 @@ import Btn from '../Btn/Btn';
 
 const NavItems = () => {
     const dispatch = useDispatch();
-    const user = useSelector((state) => state.userState.user);
+    const { user } = useSelector((state) => state)
     return (
         <Navbar.Collapse id="responsive-navbar-nav" className="justify-content-end">
-            <Nav className="">
-                {navigations.map((navItem, index) =>
-                    <NavItem key={index} link={navItem.link} Icon={navItem.Icon} linkTxt={navItem.linkTxt} />
-                )}
-                {user &&
-                    <Btn
-                        variant="primary"
-                        txt="Sign Out"
-                        size="btn btn-primary btn-sm"
-                        onClick={() => dispatch(signOut())}
-                    />
-                }
+            <Nav>
+                <div className="d-felx justify-content-between align-items-center">
+                    {navigations.map((navItem, index) =>
+                        <NavItem key={index} link={navItem.link} Icon={navItem.Icon} linkTxt={navItem.linkTxt} />
+                    )}
+                    {user &&
+                        <Btn
+                            txt="Sign Out"
+                            onClick={() => dispatch(signOut())}
+                        />
+                    }
+                </div>
             </Nav>
         </Navbar.Collapse>
     )

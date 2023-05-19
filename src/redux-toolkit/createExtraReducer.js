@@ -11,7 +11,7 @@ const stateSpecificExtraReducers = {
     newScore: (state) => {
         state.testSubmitted = true;
         state.timer = false;
-        state.modal = true;
+        state.isModal = true;
     }
 }
 

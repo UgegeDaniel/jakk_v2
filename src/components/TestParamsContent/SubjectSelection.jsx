@@ -6,20 +6,20 @@ import ToggeleSubjectAccordion from "./ToggeleSubjectAccordion";
 import YearsForSubject from "./YearsForSubject";
 
 const SubjectsSelection = () => {
-    const allSubjects = useSelector((state) => state.questionState.allSubjects);
+    const { allSubjects } = useSelector((state) => state);
 
     return (
-    <Accordion>
-        {allSubjects?.length === 0 ? <Loader /> : allSubjects.map((subject) =>
-            <ToggeleSubjectAccordion
-                eventKey={subject?.subjects_uid}
-                headerTxt={capitalizeFirstLetter(subject?.name)}
-                key={subject?.subjects_uid}
-            >
-                <YearsForSubject subjectName={subject?.name} />
-            </ToggeleSubjectAccordion>
-        )}
-    </Accordion>)
+        <Accordion>
+            {allSubjects?.length === 0 ? <Loader /> : allSubjects.map((subject) =>
+                <ToggeleSubjectAccordion
+                    eventKey={subject?.subjects_uid}
+                    headerTxt={capitalizeFirstLetter(subject?.name)}
+                    key={subject?.subjects_uid}
+                >
+                    <YearsForSubject subjectName={subject?.name} />
+                </ToggeleSubjectAccordion>
+            )}
+        </Accordion>)
 }
 
 export default SubjectsSelection;

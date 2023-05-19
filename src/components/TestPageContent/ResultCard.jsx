@@ -6,12 +6,17 @@ import { Link } from "react-router-dom";
 import { showModal } from "../../redux-toolkit/features/questionSlice";
 
 const ResultCard = () => {
-    const result = useSelector((state) => state.questionState.result)
-    const testParams = useSelector((state) => state.questionState.testParams)
+    const { result, testParams } = useSelector((state) => state)
     const { length } = useQuestions()
     const dispatch = useDispatch();
     const headers = ['Subject', 'Year', 'Attempted', 'Correct', 'Score']
-    // const tableContent = []
+    const tableContent = [
+        testParams.chosenSubject,
+        testParams.chosenYear,
+        `${result.attempted} / ${length}`,
+        `${result.correct} / ${length}`,
+        `${result.score}%`
+    ]
     return (
         <Card style={{ width: '100%' }}>
             <div className="d-flex align-items-center justify-content-between flex-fill my-1 px-5">
@@ -29,28 +34,14 @@ const ResultCard = () => {
                     </thead>
                     <tbody>
                         <tr>
-                            <td> {testParams.chosenSubject}</td>
-                            <td>{testParams.chosenYear}</td>
-                            <td> {result.attempted} / {length}</td>
-                            <td> {result.correct} / {length}</td>
-                            <td>{result.score}%</td>
+                            {tableContent.map((content, index) => <td key={index}> {content}</td>)}
                         </tr>
                     </tbody>
                 </Table>
                 <div className="d-flex align-items-center justify-content-between flex-fill my-1 mx-1">
-                    <Button variant="primary" onClick={()=> dispatch(showModal(false))}>
-                        See Correction
-                    </Button>
-                    <Link to='/dashboard'>
-                        <Button variant="primary">
-                            Go To Dashboard
-                        </Button>
-                    </Link>
-                    <Link to='/testparams'>
-                        <Button variant="outline-primary">
-                            Take Another Test
-                        </Button>
-                    </Link>
+                    <Button variant="primary" onClick={() => dispatch(showModal(false))}> See Correction</Button>
+                    <Link to='/dashboard'> <Button variant="primary"> Go To Dashboard </Button> </Link>
+                    <Link to='/testparams'> <Button variant="outline-primary"> Take Another Test </Button> </Link>
                 </div>
             </Card.Body>
         </Card>)

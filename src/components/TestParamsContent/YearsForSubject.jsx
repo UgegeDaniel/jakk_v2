@@ -8,9 +8,9 @@ import { selectYear } from "../../redux-toolkit/features/questionSlice";
 
 const YearsForSubject = ({ subjectName }) => {
     const dispatch = useDispatch();
-    const years = useSelector((state) => state.questionState.years)
-    const isLoading = useSelector((state) => state.questionState.isLoading)
-    const { chosenYear } = useSelector((state) => state.questionState.testParams)
+    const { years, isLoading, testParams: { chosenYear } } = useSelector((state) => state)
+
+    if (isLoading) return <Loader />
 
     if (years.length === 0) return (
         <div className="text-secondary">Sorry there are no questions for
@@ -22,18 +22,19 @@ const YearsForSubject = ({ subjectName }) => {
     return (
         <React.Fragment>
             <div className={`${styles.flexCenter} p-3`}>
-                {isLoading
-                    ? <Loader />
-                    : years?.map((year, index) =>
-                        <Button
-                            key={index}
-                            variant={year === chosenYear ? "primary" : "outline-primary"}
-                            className="m-1"
-                            onClick={() => dispatch(selectYear(year))}
-                        >
-                            {year}
-                        </Button>
-                    )
+                {years?.map((year, index) =>
+                    <Button
+                        key={index}
+                        variant={year === chosenYear ? "primary" : "outline-primary"}
+                        className="m-1"
+                        onClick={() => {
+                            dispatch(selectYear(year))
+                            console.log({ year, chosenYear })
+                        }}
+                    >
+                        {year}
+                    </Button>
+                )
                 }
             </div>
         </React.Fragment>

@@ -1,12 +1,12 @@
-import { TiWarningOutline } from 'react-icons/ti';
+import { TbError404 } from 'react-icons/tb';
 import { PageWrapper, ErrorPageContent } from '../components';
 
 function ErrorPage() {
     return (
         <PageWrapper
-            pageName="Error"
-            Icon={TiWarningOutline}
-            featureBar="404 : User not Found"
+            pageName="Page Not Found"
+            Icon={TbError404}
+            featureBar="404 : Page not Found"
             iconStyle="danger"
         >
             <ErrorPageContent />

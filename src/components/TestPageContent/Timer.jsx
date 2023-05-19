@@ -2,19 +2,19 @@ import { useTimer } from 'react-timer-hook';
 import { Button } from 'react-bootstrap';
 import { useCallback, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { saveUserScore } from '../../redux-toolkit/features/questionSlice';
+import { saveUserScore } from '../../redux-toolkit/asyncMethods';
 import { urls } from '../../utils';
 
 const Timer = () => {
     const expiryTimestamp = new Date();
-    const timer = useSelector((state) => state.questionState.timer);
-    const state = useSelector((state)=> state.questionState);
+    const { timer } = useSelector((state) => state);
+    const state = useSelector((state) => state);
     const dispatch = useDispatch();
     expiryTimestamp.setSeconds(expiryTimestamp.getSeconds() + 7200);
     const { seconds, minutes, hours, start } = useTimer({
         expiryTimestamp, onExpire: () => dispatch(saveUserScore(urls.saveScore(state)))
     });
-    const timerCallback = useCallback(() =>  start , [start])
+    const timerCallback = useCallback(() => start, [start])
     useEffect(() => {
         timer && timerCallback();
     }, [timer, timerCallback])
@@ -28,4 +28,3 @@ const Timer = () => {
     )
 }
 export default Timer;
-

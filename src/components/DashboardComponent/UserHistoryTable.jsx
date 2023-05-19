@@ -2,7 +2,7 @@ import { ProgressBar } from "react-bootstrap"
 import { useSelector } from "react-redux"
 import { capitalizeFirstLetter, milliSecsToMoment } from '../../utils'
 const UserHistoryTable = () => {
-    const userHistory = useSelector((state) => state.userState.userHistory)
+    const { userHistory } = useSelector((state) => state)
     return (
         <div className="table-responsive">
             {(!userHistory || userHistory?.length === 0)

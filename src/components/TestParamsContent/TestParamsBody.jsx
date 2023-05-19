@@ -1,13 +1,15 @@
 import { useDispatch, useSelector } from "react-redux";
 import { ModalComponent, Btn } from "../index";
-import { getAllSubjects } from "../../redux-toolkit/features/questionSlice";
+import { getAllSubjects } from "../../redux-toolkit/asyncMethods";
 import { urls } from "../../utils";
 import SubjectsSelection from "./SubjectSelection";
 
 const TestParamsBody = () => {
-    const allSubjects = useSelector((state) => state.questionState.allSubjects);
+    const { allSubjects } = useSelector((state) => state);
     const dispatch = useDispatch();
-    const fetchSubjects = () => dispatch(getAllSubjects(urls.getAllSubjects))
+    const fetchSubjects = () => {
+        dispatch(getAllSubjects(urls.getAllSubjects))
+    }
 
     if (!allSubjects) return <div className="text-danger lead font-weight-bold">
         Couldn't fetch Subjects

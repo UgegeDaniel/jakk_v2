@@ -6,7 +6,7 @@ import { showModal } from '../../redux-toolkit/features/questionSlice';
 
 function ModalComponent(props) {
     const { children, openModalTxt, modalHeaderTxt, btnVariant, onBtnClick } = props
-    const modal = useSelector((state)=> state.questionState.modal);
+    const { isModal } = useSelector((state) => state);
     const dispatch = useDispatch();
 
     const handleClose = () => dispatch(showModal(false));
@@ -25,13 +25,15 @@ function ModalComponent(props) {
             />
 
             <BootstrapModal
-                show={modal}
+                show={isModal}
                 onHide={handleClose}
                 backdrop="static"
                 keyboard={false}
             >
                 <BootstrapModal.Header closeButton>
-                    <BootstrapModal.Title>{modalHeaderTxt}</BootstrapModal.Title>
+                    <BootstrapModal.Title>
+                        {modalHeaderTxt}
+                    </BootstrapModal.Title>
                 </BootstrapModal.Header>
                 <BootstrapModal.Body>
                     {children}

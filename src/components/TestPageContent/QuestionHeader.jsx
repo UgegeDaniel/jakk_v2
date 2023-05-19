@@ -6,8 +6,8 @@ import parse from 'html-react-parser';
 import { capitalizeFirstLetter } from '../../utils'
 
 const QuestionHeader = ({ userChoice, examtype, section }) => {
-    const testParams = useSelector((state) => state.questionState.testParams);
-    const currentIndex = useSelector((state) => state.questionState.currentIndex)
+    const { testParams } = useSelector((state) => state);
+    const { currentIndex } = useSelector((state) => state)
     const { chosenSubject, chosenYear } = testParams;
     const numberStyle = userChoice ? "bg-primary text-white" : "bg-white text-primary"
 

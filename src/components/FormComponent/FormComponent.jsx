@@ -16,9 +16,14 @@ const FormComponent = () => {
                     {formData.isSignIn ? 'Sign Up' : "Sign In"}
                 </span>
             </p>
-            {!formData.isSignIn && <Input name="name" formik={formData.formik} />}
+            {!formData.isSignIn &&
+                <Input name="name" formik={formData.formik} />
+            }
             <Input type="email" name="email" formik={formData.formik} />
             <Input type="password" name="password" formik={formData.formik} />
+            {!formData.isSignIn &&
+                <Input type="password" name="confirmPassword" formik={formData.formik} />
+            }
             <Btn
                 txt={formData.isSignIn ? 'Sign In' : 'Sign Up'}
                 onClick={formData.handleBtnClick}

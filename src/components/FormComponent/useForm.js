@@ -8,16 +8,18 @@ import { setIsSignIn, updateFormErrors } from "../../redux-toolkit/features/user
 const useForm = () => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
-    const isSignIn = useSelector((state) => state.userState.isSignIn)
-    const formData = useSelector((state) => state.userState.formData)
+    const { isSignIn, formData } = useSelector((state) => state)
     const formik = useFormik({ ...formParams(isSignIn, dispatch, navigate, formData) });
-    const { name: nameError, email: emailError, password: passwordError, } = formik.errors;
+    const { name, email, password, confirmPassword } = formik.errors;
 
     useEffect(() => {
-        dispatch(updateFormErrors([nameError, emailError, passwordError]))
-    }, [dispatch, emailError, nameError, passwordError])
+        dispatch(updateFormErrors([name, email, password, confirmPassword]))
+    }, [dispatch, name, email, password, confirmPassword])
 
-    const handleBtnClick = () => dispatch(updateFormErrors([nameError, emailError, passwordError]))
+    const handleBtnClick = () => dispatch(
+        updateFormErrors([name, email, password, confirmPassword])
+    );
+    
     const toggleIsSignIn = () => dispatch(setIsSignIn())
     return {
         formik,

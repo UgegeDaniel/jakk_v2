@@ -3,13 +3,13 @@ import { useSelector, useDispatch } from 'react-redux';
 import { Accordion } from 'react-bootstrap';
 // eslint-disable-next-line no-unused-vars
 import Chart from 'chart.js/auto';
-import { getUserHistory } from '../../redux-toolkit/features/userSlice';
+import { getUserHistory } from '../../redux-toolkit/asyncMethods';
 import { ProfileCard, UserHistoryTable, UserStats } from '../DashboardComponent/index';
 import AccordionComponent from '../AccordionComponent/AccordionComponent';
 import { urls } from '../../utils';
 
 const DashboardComponent = () => {
-  const user = useSelector((state) => state.userState.user)
+  const { user } = useSelector((state) => state)
   const dispatch = useDispatch()
   useEffect(() => {
     dispatch(getUserHistory(urls.getUserHistory));

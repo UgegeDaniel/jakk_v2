@@ -3,19 +3,19 @@ import { Card } from "react-bootstrap";
 import TestParamsBody from "./TestParamsBody";
 import Btn from "../Btn/Btn";
 import { useDispatch, useSelector } from "react-redux";
-import { getQuestions } from "../../redux-toolkit/features/questionSlice";
+import { getQuestions } from "../../redux-toolkit/asyncMethods";
 import { urls } from "../../utils";
 import { useNavigate } from 'react-router-dom';
 
 function TestParamsContent() {
-    const testParams = useSelector((state) => state.questionState.testParams)
+    const { testParams } = useSelector((state) => state)
     const { chosenYear, chosenSubject } = testParams;
     const navigate = useNavigate();
     const dispatch = useDispatch();
     const startTest = () => {
         dispatch(getQuestions(urls.getQuestions(testParams, navigate)))
     }
- 
+
     return (
         <React.Fragment>
             <Card.Title>You have chosen to take an objective test in

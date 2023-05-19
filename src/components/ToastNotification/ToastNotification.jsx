@@ -5,10 +5,7 @@ import { setShowNotification } from '../../redux-toolkit/features/questionSlice'
 import { FaTimes, FaCheck } from 'react-icons/fa';
 
 function ToastNotification() {
-    // const userNotifications = useSelector((state) => state.userState.notifications);
-    const questionNotifications = useSelector((state) => state.questionState.notifications);
-
-    const showNotification = useSelector((state) => state.questionState.showNotification)
+    const { notifications, showNotification } = useSelector((state) => state)
     const dispatch = useDispatch();
 
     return (
@@ -17,7 +14,7 @@ function ToastNotification() {
             position='top-end'
             style={{ zIndex: 10000 }}
         >
-            {questionNotifications.map((notification, index) => {
+            {notifications.map((notification, index) => {
                 return notification.msg && (<Toast
                     key={index}
                     bg={`${notification.style}`}

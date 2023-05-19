@@ -5,11 +5,11 @@ import styles from "../../styles";
 import useQuestions from './useQuestion'
 
 const optionLetters = ['A', 'B', 'C', 'D', 'E']
-const Option = ({index, option}) => {
+const Option = ({ index, option }) => {
     const { id, answer, userChoice } = useQuestions()
 
     const dispatch = useDispatch();
-    const testSubmitted = useSelector((state) => state.questionState.testSubmitted)
+    const { testSubmitted } = useSelector((state) => state)
     const chosen = optionLetters[index].toLowerCase() === userChoice
     const chosenStyle = optionStyle(testSubmitted, answer, optionLetters, index, chosen)
 

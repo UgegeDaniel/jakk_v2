@@ -2,12 +2,13 @@ import Accordion from 'react-bootstrap/Accordion';
 import { useAccordionButton } from 'react-bootstrap/AccordionButton';
 import Card from 'react-bootstrap/Card';
 import { useDispatch, useSelector } from "react-redux";
-import { setSubjectId, getYearsForSubject } from "../../redux-toolkit/features/questionSlice";
+import { setSubjectId } from "../../redux-toolkit/features/questionSlice";
+import { getYearsForSubject } from "../../redux-toolkit/asyncMethods";
 import { urls } from "../../utils";
 
 function CustomToggle({ children, eventKey }) {
     const dispatch = useDispatch();
-    const testParams = useSelector((state) => state.questionState.testParams);
+    const { testParams } = useSelector((state) => state);
     const { chosenSubject } = testParams
 
     const handleClick = () => {
@@ -30,7 +31,7 @@ function CustomToggle({ children, eventKey }) {
 }
 
 export function ToggeleSubjectAccordion({ children, eventKey, headerTxt }) {
-    const testParams = useSelector((state) => state.questionState.testParams);
+    const { testParams } = useSelector((state) => state);
     const { subjectId } = testParams
     return (
         <Accordion>

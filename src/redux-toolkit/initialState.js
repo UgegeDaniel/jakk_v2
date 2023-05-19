@@ -8,12 +8,13 @@ const initialState = {
     allSubjects: [],
     years: [],
     questions: [],
-    
+
     //FORM
     formData: {
         name: "",
         email: "",
-        password: ""
+        password: "",
+        confirmPassword: ""
     },
     isSignIn: false,
 
@@ -43,7 +44,7 @@ const initialState = {
     },
     answeredQuestions: [],
 
-    modal: false
+    isModal: false
 }
 
 export default initialState;
