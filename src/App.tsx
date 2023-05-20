@@ -1,8 +1,8 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import ThemeProvider from 'react-bootstrap/ThemeProvider'
-import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
-import { NavbarComponent, ToastNotification } from './components'
+import ThemeProvider from 'react-bootstrap/ThemeProvider';
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import { NavbarComponent, ToastNotification } from './components';
 import { Home, About, Dashboard, TestPage, ErrorPage, TestParams } from './pages';
 import './index.css';
 import { useSelector } from 'react-redux';

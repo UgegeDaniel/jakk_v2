@@ -4,7 +4,7 @@ import React from 'react';
 // import { TbMenu2 } from 'react-icons/tb';
 // import NavItems from './NavItems';
 // import StateType from "../../types/stateTypes";
-import Sidebar from './Sidebar'
+import Sidebar from './Sidebar';
 
 const NavbarComponent: React.FC = () => {
   // const { user } = useSelector((state: StateType) => state);
@@ -18,12 +18,12 @@ const NavbarComponent: React.FC = () => {
             <Navbar.Text>
               Signed in as: <span className="text-primary">{user.user?.email}</span>
             </Navbar.Text> */}
-            {/* <Navbar.Toggle>
+      {/* <Navbar.Toggle>
               <TbMenu2 />
             </Navbar.Toggle> */}
-              <Sidebar />
-            {/* <NavItems /> */}
-          {/* </Container>
+      <Sidebar />
+      {/* <NavItems /> */}
+      {/* </Container>
         )}
       </Navbar> */}
     </>

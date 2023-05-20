@@ -1,47 +1,47 @@
 /* eslint-disable @typescript-eslint/no-non-null-assertion */
-import StateType from "../types/stateTypes";
+import StateType from '../types/stateTypes';
 
-  const initialState: StateType = {
-    user: JSON.parse(localStorage.getItem('user')!),
-    userHistory: [],
+const initialState: StateType = {
+  user: JSON.parse(localStorage.getItem('user')!),
+  userHistory: [],
   
-    allSubjects: [],
-    years: [],
-    questions: [],
+  allSubjects: [],
+  years: [],
+  questions: [],
   
-    formData: {
-      name: "",
-      email: "",
-      password: "",
-      confirmPassword: ""
-    },
-    isSignIn: false,
+  formData: {
+    name: '',
+    email: '',
+    password: '',
+    confirmPassword: ''
+  },
+  isSignIn: false,
   
-    notifications: [],
-    showNotification: false,
-    isLoading: false,
+  notifications: [],
+  showNotification: false,
+  isLoading: false,
   
-    showError: false,
+  showError: false,
   
-    testParams: {
-      subjectId: '',
-      chosenYear: '',
-      chosenSubject: ''
-    },
-    testStarted: false,
-    testSubmitted: false,
+  testParams: {
+    subjectId: '',
+    chosenYear: '',
+    chosenSubject: ''
+  },
+  testStarted: false,
+  testSubmitted: false,
   
-    currentIndex: 0,
-    timer: false,
-    result: {
-      attempted: 0,
-      correct: 0,
-      score: 0
-    },
-    answeredQuestions: [],
+  currentIndex: 0,
+  timer: false,
+  result: {
+    attempted: 0,
+    correct: 0,
+    score: 0
+  },
+  answeredQuestions: [],
   
-    isModal: false
-  };
+  isModal: false
+};
   
 
 export default initialState;

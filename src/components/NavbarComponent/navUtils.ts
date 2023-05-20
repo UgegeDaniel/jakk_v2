@@ -4,8 +4,8 @@ import { RxDashboard } from 'react-icons/rx';
 import { BsBook } from 'react-icons/bs';
 
 export const navigations = [
-    { link: '/', Icon: BiHomeAlt2, linkTxt: "Home" },
-    { link: '/dashboard', Icon: RxDashboard, linkTxt: "Dashboard" },
-    { link: '/testparams', Icon: BsBook, linkTxt: "Take A Test" },
-    { link: '/about', Icon: CgDetailsMore, linkTxt: "About" },
-]
+  { link: '/', Icon: BiHomeAlt2, linkTxt: 'Home' },
+  { link: '/dashboard', Icon: RxDashboard, linkTxt: 'Dashboard' },
+  { link: '/testparams', Icon: BsBook, linkTxt: 'Take A Test' },
+  { link: '/about', Icon: CgDetailsMore, linkTxt: 'About' },
+];

@@ -12,11 +12,11 @@ interface NavItemProps {
 
 const NavItem: React.FC<NavItemProps> = ({ link, Icon, linkTxt, fontSize }) => {
   const location = useLocation();
-  const isCuurentPage = link === location.pathname
+  const isCuurentPage = link === location.pathname;
   const currentLinkStyle = isCuurentPage
-    ? "border rounded border-primary text-primary"
-    : "text-white"
-  const currentLinkTxtStyle = isCuurentPage ? "text-primary" : "text-white";
+    ? 'border rounded border-primary text-primary'
+    : 'text-white';
+  const currentLinkTxtStyle = isCuurentPage ? 'text-primary' : 'text-white';
   
   return (
     <span className={`mr-2 mb-3 ${fontSize} ${currentLinkStyle} p-2`}>
@@ -27,7 +27,7 @@ const NavItem: React.FC<NavItemProps> = ({ link, Icon, linkTxt, fontSize }) => {
         {linkTxt}
       </Link>
     </span>
-  )
+  );
 };
 
 export default NavItem;

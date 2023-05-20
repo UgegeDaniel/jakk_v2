@@ -1,13 +1,13 @@
-import React from "react";
-import { Card } from "react-bootstrap";
-import TestParamsBody from "./TestParamsBody";
-import Btn from "../Btn/Btn";
-import { useDispatch, useSelector } from "react-redux";
-import { getQuestions } from "../../redux-toolkit/asyncMethods";
+import React from 'react';
+import { Card } from 'react-bootstrap';
+import TestParamsBody from './TestParamsBody';
+import Btn from '../Btn/Btn';
+import { useDispatch, useSelector } from 'react-redux';
+import { getQuestions } from '../../redux-toolkit/asyncMethods';
 import { useNavigate } from 'react-router-dom';
-import StateType from "../../types/stateTypes";
-import { urls } from "../../utils/urls";
-import { AnyAction } from "@reduxjs/toolkit";
+import StateType from '../../types/stateTypes';
+import { urls } from '../../utils/urls';
+import { AnyAction } from '@reduxjs/toolkit';
 
 function TestParamsContent() {
   const { testParams } = useSelector((state: StateType) => state);
@@ -23,10 +23,10 @@ function TestParamsContent() {
       <Card.Title>
         You have chosen to take an objective test in
         <span className={`text-primary mx-1 ${!chosenSubject && 'text-danger'}`}>
-          {chosenSubject || "---"}
+          {chosenSubject || '---'}
         </span> of year
         <span className={`text-primary mx-1 ${!chosenYear && 'text-danger'}`}>
-          {chosenYear || "---"}
+          {chosenYear || '---'}
         </span>
         <span className='text-primary mr-1'> UTME </span> Examinations
       </Card.Title>

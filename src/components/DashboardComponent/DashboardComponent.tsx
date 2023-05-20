@@ -8,7 +8,7 @@ import { urls } from '../../utils/urls';
 import StateType from '../../types/stateTypes';
 import { AnyAction } from '@reduxjs/toolkit';
 import Chart from 'chart.js/auto';
-import { ArcElement, CategoryScale } from 'chart.js'
+import { ArcElement, CategoryScale } from 'chart.js';
 Chart.register(ArcElement);
 Chart.register(CategoryScale);
 

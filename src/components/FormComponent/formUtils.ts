@@ -30,7 +30,7 @@ const signInSuccess = (
   values: FormikValues,
   navigate: NavigateFunction
 ) => {
-  console.log("sign in form handler")
+  console.log('sign in form handler');
   const signInParams = { ...urls.signin(navigate), postBody: values };
   dispatch(signInUser(signInParams)as unknown as AnyAction);
 };
@@ -49,7 +49,7 @@ const submitHandler = (
   isSignIn: boolean,
   navigate: NavigateFunction
 ) => (values: FormikValues, onSubmitParams: FormikHelpers<FormikValues>) => {
-  console.log("submit handler")
+  console.log('submit handler');
   if (isSignIn) {
     signInSuccess(dispatch, values, navigate);
   }

@@ -20,7 +20,7 @@ const useForm = (): UseFormProps => {
   const formik = useFormik({ ...formParams(isSignIn, dispatch, navigate, formData) });
 
   const { name, email, password, confirmPassword } = formik.errors;
-  const errorValues = [name, email, password, confirmPassword]
+  const errorValues = [name, email, password, confirmPassword];
 
   // useEffect(() => {
   //   dispatch(updateFormErrors(errorValues));

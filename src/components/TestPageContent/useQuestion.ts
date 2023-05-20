@@ -1,5 +1,5 @@
-import { useSelector } from "react-redux";
-import StateType from "../../types/stateTypes";
+import { useSelector } from 'react-redux';
+import StateType from '../../types/stateTypes';
 
 const useQuestions = () => {
   const { isLoading, currentIndex, questions, answeredQuestions } = useSelector((state: StateType) => state);

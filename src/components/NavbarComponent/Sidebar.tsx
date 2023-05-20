@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import { Navbar, Container, Nav } from 'react-bootstrap';
 import { useMediaQuery } from 'react-responsive';
-import "./Sidebar.css";
-import NavItems from "./NavItems";
+import './Sidebar.css';
+import NavItems from './NavItems';
 import { useSelector } from 'react-redux';
-import StateType from "../../types/stateTypes";
+import StateType from '../../types/stateTypes';
 import { TbMenu2 } from 'react-icons/tb';
 import { FaTimes } from 'react-icons/fa';
 
@@ -13,7 +13,7 @@ const Sidebar: React.FC = () => {
   const { user } = useSelector((state: StateType) => state);
   const isSmallScreen = useMediaQuery({ query: '(max-width: 992px)' });
 
-  console.log({ isSmallScreen })
+  console.log({ isSmallScreen });
 
   const handleToggleSidebar = () => {
     setSidebarOpen(!sidebarOpen);
@@ -39,7 +39,7 @@ const Sidebar: React.FC = () => {
           )}
           {!isSmallScreen &&
             <Nav className="mr-0">
-              <NavItems style={"flex-row align-items-center justify-content-center"} />
+              <NavItems style={'flex-row align-items-center justify-content-center'} />
             </Nav>
           }
         </Container>
@@ -51,7 +51,7 @@ const Sidebar: React.FC = () => {
               className="text-danger border border-danger rounded nav-icon fs-1 p-2 font-weight-bold"
               onClick={handleToggleSidebar}
             />
-            <NavItems style={"flex-column align-items-start justify-content-center"} fontSize="fs-6" />
+            <NavItems style={'flex-column align-items-start justify-content-center'} fontSize="fs-6" />
           </Container>
         )}
       </Navbar>

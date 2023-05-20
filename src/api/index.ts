@@ -1,6 +1,6 @@
 import axios, { AxiosResponse } from 'axios';
 import { baseUrl, getConfig } from './config';
-import { NavigateFunction } from "react-router-dom";
+import { NavigateFunction } from 'react-router-dom';
 
 export interface RequestParams {
   endpoint: string;
@@ -23,12 +23,12 @@ export interface FailureResponse {
 }
 
 const onSuccess = <T>(
-    responseData: T, 
-    navParams?:{
+  responseData: T, 
+  navParams?:{
         navFunc: NavigateFunction,
         navPath: string
     }
-    ): SuccessResponse<T> => {
+): SuccessResponse<T> => {
   if (responseData && navParams) {
     navParams.navFunc(navParams.navPath);
   }

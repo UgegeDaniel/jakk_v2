@@ -53,5 +53,5 @@ export const pieData = (userHistory: {name: string, year: string, time_of_test: 
         borderWidth: 1,
       },
     ],
-  } as ChartData<"pie", (number |  [number, number] | null)[], unknown>;
+  } as ChartData<'pie', (number |  [number, number] | null)[], unknown>;
 };

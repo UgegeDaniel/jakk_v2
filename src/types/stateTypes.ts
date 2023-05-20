@@ -76,4 +76,4 @@ export interface User {
     isModal: boolean;
   }
 
-  export default StateType
+export default StateType;

@@ -1,11 +1,11 @@
-import React from "react";
-import Loader from "../Loaders/Loader";
-import { Button } from "react-bootstrap";
-import { capitalizeFirstLetter } from "../../utils";
-import styles from "../../styles";
-import { useDispatch, useSelector } from "react-redux";
-import { selectYear } from "../../redux-toolkit/features/questionSlice";
-import StateType from "../../types/stateTypes";
+import React from 'react';
+import Loader from '../Loaders/Loader';
+import { Button } from 'react-bootstrap';
+import { capitalizeFirstLetter } from '../../utils';
+import styles from '../../styles';
+import { useDispatch, useSelector } from 'react-redux';
+import { selectYear } from '../../redux-toolkit/features/questionSlice';
+import StateType from '../../types/stateTypes';
 
 interface YearsForSubjectProps {
   subjectName: string;
@@ -30,7 +30,7 @@ const YearsForSubject: React.FC<YearsForSubjectProps> = ({ subjectName }) => {
         {years?.map((year, index: number) =>
           <Button
             key={index}
-            variant={year === chosenYear ? "primary" : "outline-primary"}
+            variant={year === chosenYear ? 'primary' : 'outline-primary'}
             className="m-1"
             onClick={() => {
               dispatch(selectYear(year));

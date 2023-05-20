@@ -17,7 +17,7 @@ const Btn: React.FC<BtnProps> = ({ disabled, onClick, txt, size, variant }) => {
 
   return (
     <Button
-      variant={variant || "primary"}
+      variant={variant || 'primary'}
       type="submit"
       className={`btn ${size || 'btn-sm'}`}
       disabled={isLoading || disabled}
@@ -26,6 +26,6 @@ const Btn: React.FC<BtnProps> = ({ disabled, onClick, txt, size, variant }) => {
       {isLoading && <Loader className="px-2" />}{txt}
     </Button>
   );
-}
+};
 
 export default Btn;
