@@ -1,0 +1,55 @@
+{
+  "extends": [
+    "eslint:recommended",
+    "plugin:react/recommended",
+    "plugin:@typescript-eslint/recommended"
+  ],
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "ecmaFeatures": {
+      "jsx": true
+    },
+    "ecmaVersion": 12,
+    "sourceType": "module"
+  },
+  "root": true,
+  "ignorePatterns": [
+    "**/*.js"
+  ],
+  "plugins": [
+    "react",
+    "@typescript-eslint",
+    "eslint-plugin"
+  ],
+  "rules": {
+    "import/extensions": "off",
+    "import/no-unresolved": [1, { "commonjs": true, "amd": true }],
+    "import/prefer-default-export": "on",
+    "@typescript-eslint/explicit-function-return-type": "on",
+    "no-unused-vars": [
+      "error",
+      {
+        "argsIgnorePattern": "^_"
+      }
+    ],
+    "camelcase": ["error", { "ignoreDestructuring": true }],
+    "max-len": ["error", { "code": 80 }],
+    "max-lines": ["error", { "max": 50, "skipBlankLines": true, "skipComments": true }],
+    "eslint-plugin/eslint-plugin/naming-convention": [
+      "error",
+      {
+        "selector": "variable",
+        "format": ["camelCase", "UPPER_CASE", "PascalCase"],
+        "leadingUnderscore": "allow"
+      }
+    ],
+    "semi": ["error", "always"]
+  },
+  "settings": {
+    "import/resolver": {
+      "node": {
+        "extensions": [".js", ".jsx", ".ts", ".tsx"]
+      }
+    }
+  }
+}

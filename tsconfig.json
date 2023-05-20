@@ -1,0 +1,23 @@
+{
+  "compilerOptions": {
+    "jsx": "react",
+    "outDir": "./dist",
+    "useUnknownInCatchVariables": false,
+    "resolveJsonModule": true,
+    "strict": true,
+    "moduleResolution": "node",
+    "module": "es2020",
+    "target": "es2015",
+    "sourceMap": true,
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "skipLibCheck": true
+  },
+  "exclude": [
+    "node_modules"
+  ],
+  "include": [
+    "src/**/*.ts",
+    "environment.d.ts", "src/App.tsx", "src/redux-toolkit/reducers/userReducers.ts", "src/index.js", "src/pages/about.tsx", "src/pages/dashboard.tsx", "src/pages/errorPage.tsx", "src/pages/home.tsx", "src/pages/testPage.tsx", "src/pages/testParams.tsx",
+  ],
+}
