@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Navbar, Container, Nav } from 'react-bootstrap';
-import useBreakpoint from 'react-responsive';
+import { useMediaQuery } from 'react-responsive';
 import "./Sidebar.css";
 import NavItems from "./NavItems";
 import { useSelector } from 'react-redux';
@@ -11,7 +11,7 @@ import { FaTimes } from 'react-icons/fa';
 const Sidebar: React.FC = () => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const { user } = useSelector((state: StateType) => state);
-  const isSmallScreen = useBreakpoint({ query: '(max-width: 992px)' });
+  const isSmallScreen = useMediaQuery({ query: '(max-width: 992px)' });
 
   console.log({ isSmallScreen })
 
