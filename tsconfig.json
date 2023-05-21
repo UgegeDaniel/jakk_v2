@@ -18,6 +18,16 @@
   ],
   "include": [
     "src/**/*.ts",
-    "environment.d.ts", "src/App.tsx", "src/redux-toolkit/reducers/userReducers.ts", "src/index.js", "src/pages/about.tsx", "src/pages/dashboard.tsx", "src/pages/errorPage.tsx", "src/pages/home.tsx", "src/pages/testPage.tsx", "src/pages/testParams.tsx",
+    "environment.d.ts",
+    "src/App.tsx",
+    "src/redux-toolkit/reducers/userReducers.ts",
+    "src/index.js",
+    "src/pages/about.tsx",
+    "src/pages/dashboard.tsx",
+    "src/pages/errorPage.tsx",
+    "src/pages/home.tsx",
+    "src/pages/testPage.tsx",
+    "src/pages/testParams.tsx",
+    "css.d.ts"
   ],
 }
