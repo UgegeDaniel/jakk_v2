@@ -2,7 +2,9 @@
 import { NavigateFunction } from 'react-router-dom';
 import StateType from '../types/stateTypes';
 
-const existingPath = localStorage.getItem('path');
+const existingPath = localStorage.getItem('path')
+  ? localStorage.getItem('path')
+  : '/';
 
 export const urls = {
   getUserHistory: { endpoint: '/users/history', extract: 'userHistory' },
@@ -44,13 +46,13 @@ export const urls = {
       },
     };
   },
-  
+
   verifyEmail: (ref: string | undefined, navFunc: NavigateFunction) => {
     return {
       endpoint: '/users/signup/verifyEmail',
       extract: 'user',
       postBody: {
-        ref
+        ref,
       },
       navParams: { navPath: existingPath!, navFunc: navFunc },
     };

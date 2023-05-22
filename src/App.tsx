@@ -3,7 +3,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import ThemeProvider from 'react-bootstrap/ThemeProvider';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import { NavbarComponent, ToastNotification } from './components';
-import { Home, About, Dashboard, TestPage, ErrorPage, TestParams, EmailVerification, UnVerifiedUser } from './pages';
+import { Home, About, Dashboard, TestPage, ErrorPage, TestParams, EmailVerification, UnVerifiedUser } from './pages'; 
 import './index.css';
 import { useSelector } from 'react-redux';
 import { User } from './types/stateTypes';
@@ -14,6 +14,7 @@ function App() {
   const { user } = useSelector((state) => state) as User;
   const verifiedUser = user && user.user.verified;
   const unVerifiedUser = user && !user.user.verified;
+
   return (
     <Router>
       <ThemeProvider

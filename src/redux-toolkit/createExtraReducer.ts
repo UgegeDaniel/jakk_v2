@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import StateType, {User} from '../types/stateTypes';
+import StateType, { User } from '../types/stateTypes';
 import { ActionReducerMapBuilder, AsyncThunk } from '@reduxjs/toolkit';
 
 const handleUserSuccess = (state: StateType, responseData: User) => {
@@ -7,7 +7,7 @@ const handleUserSuccess = (state: StateType, responseData: User) => {
   state.notifications.push({ style: 'success', msg: 'Sign in successfully' });
 };
 
-const handleQuestionsSuccess =(state: StateType) => {
+const handleQuestionsSuccess = (state: StateType) => {
   state.timer = true;
   state.testSubmitted = false;
 };
@@ -18,15 +18,19 @@ const handleSaveScoreSuccess = (state: StateType) => {
   state.isModal = true;
 };
 
-
 const onError = (
-  state: StateType, 
-  responseError: string[] | string | undefined 
+  state: StateType,
+  responseError: string[] | string | undefined,
 ) => {
-  const hasErrorMsg = state.notifications.find((notification) => notification.msg === responseError);
+  const hasErrorMsg = state.notifications.find(
+    (notification) => notification.msg === responseError,
+  );
   const errorIsArray = Array.isArray(responseError);
   if (errorIsArray) {
-    state.notifications = responseError.map((msg) => ({ style: 'danger', msg }));
+    state.notifications = responseError.map((msg) => ({
+      style: 'danger',
+      msg,
+    }));
   }
 
   if (!errorIsArray && !hasErrorMsg) {
@@ -36,38 +40,48 @@ const onError = (
 };
 
 interface FulfilledAction<ThunkArg, PromiseResult> {
-    type: string
-    payload: PromiseResult
-    meta: {
-      requestId: string
-      arg: ThunkArg
-    }
-  }
+  type: string;
+  payload: PromiseResult;
+  meta: {
+    requestId: string;
+    arg: ThunkArg;
+  };
+}
 
 export const createExtraReducer = (
-  builder: ActionReducerMapBuilder<StateType>, 
-  asyncMethod: AsyncThunk<unknown, void, any>, 
-  stateToUpdate: string
+  builder: ActionReducerMapBuilder<StateType>,
+  asyncMethod: AsyncThunk<unknown, void, any>,
+  stateToUpdate: string,
 ) => {
-  builder.addCase(asyncMethod.pending, (state: { isLoading: boolean; }) => {
+  builder.addCase(asyncMethod.pending, (state: { isLoading: boolean }) => {
     state.isLoading = true;
   });
 
-  builder.addCase(asyncMethod.fulfilled, (state: StateType, action: FulfilledAction<any, any> ) => {
-    const { responseData, responseError } = action.payload;
-    state.isLoading = false;
-    if(responseData){
-      if(stateToUpdate === 'user') handleUserSuccess(state, responseData);
-      if(stateToUpdate === 'questions') handleQuestionsSuccess(state);
-      if(stateToUpdate === 'newScore') handleSaveScoreSuccess(state);
-      state[stateToUpdate as keyof StateType] = responseData as never;
-    }
-    if (responseError) onError(state, responseError);
-  });
-    
-  builder.addCase(asyncMethod.rejected, (state: StateType, action: { payload: any; }) => {
-    state.isLoading = false;
-    state.notifications = [...state.notifications, { style: 'danger', msg: action.payload }];
-    state.showNotification = true;
-  });
+  builder.addCase(
+    asyncMethod.fulfilled,
+    (state: StateType, action: FulfilledAction<any, any>) => {
+      const { responseData, responseError } = action.payload;
+      state.isLoading = false;
+      if (responseData) {
+        if (stateToUpdate === 'user') handleUserSuccess(state, responseData);
+        if (stateToUpdate === 'questions') handleQuestionsSuccess(state);
+        if (stateToUpdate === 'newScore') handleSaveScoreSuccess(state);
+        state[stateToUpdate as keyof StateType] = responseData as never;
+        console.log({ user: state.user });
+      }
+      if (responseError) onError(state, responseError);
+    },
+  );
+
+  builder.addCase(
+    asyncMethod.rejected,
+    (state: StateType, action: { payload: any }) => {
+      state.isLoading = false;
+      state.notifications = [
+        ...state.notifications,
+        { style: 'danger', msg: action.payload },
+      ];
+      state.showNotification = true;
+    },
+  );
 };

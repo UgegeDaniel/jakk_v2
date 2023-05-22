@@ -23,11 +23,11 @@ export interface FailureResponse {
 }
 
 const onSuccess = <T>(
-  responseData: T, 
-  navParams?:{
-        navFunc: NavigateFunction,
-        navPath: string
-    }
+  responseData: T,
+  navParams?: {
+    navFunc: NavigateFunction;
+    navPath: string;
+  },
 ): SuccessResponse<T> => {
   if (responseData && navParams) {
     navParams.navFunc(navParams.navPath);
@@ -35,29 +35,30 @@ const onSuccess = <T>(
   return { responseData, responseError: null };
 };
 
-const onFailure = (
-  err: { 
-    response: { 
-      data: {
-        msg?: string, 
-        errors?: string[]
-      }; 
-    }; 
-    message: string; 
-  }
-): FailureResponse => {
+const onFailure = (err: {
+  response: {
+    data: {
+      msg?: string;
+      errors?: string[];
+    };
+  };
+  message: string;
+}): FailureResponse => {
   const error = err.response?.data || err.message;
   const responseError = error.msg || error.errors || error;
   return { responseData: null, responseError };
 };
 
 export const axiosGetRequestHandler = async <T>(
-  reqParams: RequestParams
+  reqParams: RequestParams,
 ): Promise<SuccessResponse<T> | FailureResponse> => {
   const { endpoint, extract, navParams } = reqParams;
   const config = getConfig();
   try {
-    const { data }: AxiosResponse = await axios.get(`${baseUrl}${endpoint}`, config);
+    const { data }: AxiosResponse = await axios.get(
+      `${baseUrl}${endpoint}`,
+      config,
+    );
     const responseData = await data[extract];
     return onSuccess<T>(responseData, navParams);
   } catch (err) {
@@ -66,13 +67,19 @@ export const axiosGetRequestHandler = async <T>(
 };
 
 export const axiosPostRequestHandler = async <T>(
-  reqParams: RequestParams
+  reqParams: RequestParams,
 ): Promise<SuccessResponse<T> | FailureResponse> => {
   const { endpoint, postBody, extract, navParams } = reqParams;
+  console.log({ endpoint, postBody });
   const config = getConfig();
   try {
-    const { data }: AxiosResponse = await axios.post(`${baseUrl}${endpoint}`, postBody, config);
+    const { data }: AxiosResponse = await axios.post(
+      `${baseUrl}${endpoint}`,
+      postBody,
+      config,
+    );
     const responseData = extract === 'user' ? await data : await data[extract];
+    console.log({ responseData, navParams });
     return onSuccess<T>(responseData, navParams);
   } catch (err) {
     return onFailure(err);
