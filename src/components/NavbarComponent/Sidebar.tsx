@@ -13,6 +13,7 @@ const Sidebar: React.FC = () => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const { user } = useSelector((state: StateType) => state);
   const isSmallScreen = useMediaQuery({ query: '(max-width: 992px)' });
+  const unVerifiedUser = user && !user.user.verified;
 
   const handleToggleSidebar = () => {
     setSidebarOpen(!sidebarOpen);
@@ -34,19 +35,24 @@ const Sidebar: React.FC = () => {
               <span
                 className="text-primary">{user.user?.email}
               </span>
+              {unVerifiedUser && <span
+                className="text-danger m-2 d-block">
+                Please Verify Your Email
+              </span>
+              }
             </Navbar.Text>
             <Navbar.Toggle onClick={handleToggleSidebar}>
               <TbMenu2 />
             </Navbar.Toggle>
           </React.Fragment>
         )}
-        {user && !isSmallScreen && (
+        {!isSmallScreen && (
           <Nav className="mr-0">
             <NavItems style={'flex-row align-items-center justify-content-center'} />
           </Nav>
         )}
       </Container>
-      {user && isSmallScreen && (
+      {isSmallScreen && (
         <Container
           fluid
           className={`sidebar ${sidebarOpen ? 'open' : ''} bg-dark d-flex align-items-center justify-content-center`}>

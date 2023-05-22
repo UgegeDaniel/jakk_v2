@@ -19,7 +19,7 @@ const NavItems: React.FC<NavItemsProps> = ({ style, fontSize }) => {
   return (
     <Nav className={style}>
       {navigations.map((navItem, index) => (
-        <NavItem
+        user?.user.verified && <NavItem
           key={index}
           link={navItem.link}
           Icon={navItem.Icon}

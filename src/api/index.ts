@@ -35,13 +35,25 @@ const onSuccess = <T>(
   return { responseData, responseError: null };
 };
 
-const onFailure = (err: { response: { data: {msg?: string, errors?: string[]}; }; message: string; }): FailureResponse => {
+const onFailure = (
+  err: { 
+    response: { 
+      data: {
+        msg?: string, 
+        errors?: string[]
+      }; 
+    }; 
+    message: string; 
+  }
+): FailureResponse => {
   const error = err.response?.data || err.message;
   const responseError = error.msg || error.errors || error;
   return { responseData: null, responseError };
 };
 
-export const axiosGetRequestHandler = async <T>(reqParams: RequestParams): Promise<SuccessResponse<T> | FailureResponse> => {
+export const axiosGetRequestHandler = async <T>(
+  reqParams: RequestParams
+): Promise<SuccessResponse<T> | FailureResponse> => {
   const { endpoint, extract, navParams } = reqParams;
   const config = getConfig();
   try {
@@ -53,7 +65,9 @@ export const axiosGetRequestHandler = async <T>(reqParams: RequestParams): Promi
   }
 };
 
-export const axiosPostRequestHandler = async <T>(reqParams: RequestParams): Promise<SuccessResponse<T> | FailureResponse> => {
+export const axiosPostRequestHandler = async <T>(
+  reqParams: RequestParams
+): Promise<SuccessResponse<T> | FailureResponse> => {
   const { endpoint, postBody, extract, navParams } = reqParams;
   const config = getConfig();
   try {

@@ -19,7 +19,10 @@ const handleSaveScoreSuccess = (state: StateType) => {
 };
 
 
-const onError = (state: StateType, responseError: string[] | string | undefined ) => {
+const onError = (
+  state: StateType, 
+  responseError: string[] | string | undefined 
+) => {
   const hasErrorMsg = state.notifications.find((notification) => notification.msg === responseError);
   const errorIsArray = Array.isArray(responseError);
   if (errorIsArray) {

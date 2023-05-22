@@ -14,7 +14,7 @@ export const urls = {
   signup: (navFunc: NavigateFunction) => ({
     endpoint: '/users/signup',
     extract: 'user',
-    navParams: { navPath: existingPath!, navFunc: navFunc },
+    navParams: { navPath: '/verifyEmail', navFunc: navFunc },
   }),
   getAllSubjects: { endpoint: '/subjects', extract: 'allSubjects' },
   getYearsForSubject: (chosenId: string) => ({
@@ -42,6 +42,17 @@ export const urls = {
         score: `${state.result.score}`,
         year: `${state.testParams.chosenYear}`,
       },
+    };
+  },
+  
+  verifyEmail: (ref: string | undefined, navFunc: NavigateFunction) => {
+    return {
+      endpoint: '/users/signup/verifyEmail',
+      extract: 'user',
+      postBody: {
+        ref
+      },
+      navParams: { navPath: existingPath!, navFunc: navFunc },
     };
   },
 };

@@ -24,7 +24,10 @@ const PageWrapper: React.FC<PageWrapperProps> = ({
   const location = useLocation();
 
   useEffect(() => {
-    if (location.pathname !== '/' && location.pathname !== '/dashboard') {
+    const pathsNotSaved = location.pathname === '/' 
+      || location.pathname === '/dashboard'
+      || location.pathname.includes('verifyEmail');
+    if (!pathsNotSaved) {
       localStorage.setItem('path', location.pathname);
     }
   }, [location.pathname]);

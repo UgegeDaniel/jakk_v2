@@ -9,6 +9,7 @@ type AsyncMethodType = AsyncThunkAction<SuccessResponse<unknown> | FailureRespon
 export const signInUser:  AsyncMethodType= createAsyncThunk('user/signIn', axiosPostRequestHandler);
 export const signUpUser: AsyncMethodType= createAsyncThunk('user/signUp', axiosPostRequestHandler);
 export const getUserHistory: AsyncMethodType = createAsyncThunk('user/getHistory', axiosGetRequestHandler);
+export const verifyEmail: AsyncMethodType = createAsyncThunk('user/verifyMail', axiosPostRequestHandler);
 
 // QUESTIONS ASYNC METHODS
 export const getAllSubjects: AsyncMethodType = createAsyncThunk('questions/allSubjects', axiosGetRequestHandler);

@@ -1,12 +1,13 @@
 
 export interface User {
-    token: string;
-    success: boolean;
-    user: {
-        email: string,
-        name: string,
-    }
+  success: boolean;
+  user: {
+    user: any;
+    email: string,
+    name: string
+    verified: boolean;
   }
+}
   
   interface FormData {
     name: string,
