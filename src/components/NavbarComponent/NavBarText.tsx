@@ -1,12 +1,13 @@
 import React from 'react';
-import { Navbar } from 'react-bootstrap';
+import { Navbar, Button } from 'react-bootstrap';
 import './Sidebar.css';
+import { Link } from 'react-router-dom'
 import { useSelector } from 'react-redux';
 import StateType from '../../types/stateTypes';
 import { TbMenu2 } from 'react-icons/tb';
 
 interface NavBarTextProps {
-    handleToggleSidebar: () => void;
+  handleToggleSidebar: () => void;
 }
 
 const NavBarText: React.FC<NavBarTextProps> = ({ handleToggleSidebar }) => {
@@ -18,9 +19,11 @@ const NavBarText: React.FC<NavBarTextProps> = ({ handleToggleSidebar }) => {
         <span
           className="text-primary">{user?.user.email}
         </span>
-        {unVerifiedUser && <span
-          className="text-danger m-2 d-block"> Please Verify Your Email
-        </span>
+        {unVerifiedUser && <Link to='/verifyEmail'>
+          <Button
+            className="btn btn-dm btn-danger m-2 d-block"> Verify Your Email
+          </Button>
+        </Link>
         }
       </Navbar.Text>
       <Navbar.Toggle onClick={handleToggleSidebar}>
