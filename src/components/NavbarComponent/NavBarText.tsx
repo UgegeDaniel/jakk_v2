@@ -1,7 +1,7 @@
 import React from 'react';
 import { Navbar, Button } from 'react-bootstrap';
 import './Sidebar.css';
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import StateType from '../../types/stateTypes';
 import { TbMenu2 } from 'react-icons/tb';
@@ -21,7 +21,7 @@ const NavBarText: React.FC<NavBarTextProps> = ({ handleToggleSidebar }) => {
         </span>
         {unVerifiedUser && <Link to='/verifyEmail'>
           <Button
-            className="btn btn-dm btn-danger m-2 d-block"> Verify Your Email
+            className="btn btn-sm btn-warning text-white m-2 d-block"> Verify Your Email
           </Button>
         </Link>
         }
