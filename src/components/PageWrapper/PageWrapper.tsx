@@ -3,6 +3,7 @@ import { Card } from 'react-bootstrap';
 import PageFooter from './PageFooter';
 import { useLocation } from 'react-router-dom';
 import { IconType } from 'react-icons';
+import { Container } from 'react-bootstrap';
 
 interface PageWrapperProps {
   pageName: string;
@@ -24,7 +25,7 @@ const PageWrapper: React.FC<PageWrapperProps> = ({
   const location = useLocation();
 
   useEffect(() => {
-    const pathsNotSaved = location.pathname === '/' 
+    const pathsNotSaved = location.pathname === '/'
       || location.pathname === '/dashboard'
       || location.pathname.includes('verifyEmail');
     if (!pathsNotSaved) {
@@ -33,7 +34,7 @@ const PageWrapper: React.FC<PageWrapperProps> = ({
   }, [location.pathname]);
 
   return (
-    <div className="px-5 pb-5 pt-3">
+    <Container className="px-3 pb-5 pt-3">
       <h3 className="page-title display-6">
         <Icon className={`text-${iconStyle || 'primary'}`} /> {pageName}
       </h3>
@@ -46,7 +47,7 @@ const PageWrapper: React.FC<PageWrapperProps> = ({
         <Card.Body>{children}</Card.Body>
         <PageFooter />
       </Card>
-    </div>
+    </Container>
   );
 };
 
