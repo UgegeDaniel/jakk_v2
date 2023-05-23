@@ -18,6 +18,13 @@ const handleSaveScoreSuccess = (state: StateType) => {
   state.isModal = true;
 };
 
+const handleVerificationNotification = (state: StateType) => {
+  state.showNotification = true;
+  state.notifications = [
+    { msg: 'Verification Email Sent Successfuly', style: 'success' },
+  ];
+};
+
 const onError = (
   state: StateType,
   responseError: string[] | string | undefined,
@@ -52,6 +59,7 @@ export const createExtraReducer = (
   builder: ActionReducerMapBuilder<StateType>,
   asyncMethod: AsyncThunk<unknown, void, any>,
   stateToUpdate: string,
+  extraActions?: string,
 ) => {
   builder.addCase(asyncMethod.pending, (state: { isLoading: boolean }) => {
     state.isLoading = true;
@@ -62,12 +70,15 @@ export const createExtraReducer = (
     (state: StateType, action: FulfilledAction<any, any>) => {
       const { responseData, responseError } = action.payload;
       state.isLoading = false;
-      if (responseData) {
-        if (stateToUpdate === 'user') handleUserSuccess(state, responseData);
+      if (!responseError) {
+        if (extraActions === 'verifyEmail')
+          handleVerificationNotification(state);
         if (stateToUpdate === 'questions') handleQuestionsSuccess(state);
         if (stateToUpdate === 'newScore') handleSaveScoreSuccess(state);
+      }
+      if (responseData) {
+        if (stateToUpdate === 'user') handleUserSuccess(state, responseData);
         state[stateToUpdate as keyof StateType] = responseData as never;
-        console.log({ user: state.user });
       }
       if (responseError) onError(state, responseError);
     },

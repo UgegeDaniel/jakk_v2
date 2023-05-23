@@ -13,11 +13,23 @@ export const urls = {
     extract: 'user',
     navParams: { navPath: existingPath!, navFunc: navFunc },
   }),
+
   signup: (navFunc: NavigateFunction) => ({
     endpoint: '/users/signup',
     extract: 'user',
     navParams: { navPath: '/verifyEmail', navFunc: navFunc },
   }),
+
+  resendEmail: (email: string, name: string, navFunc: NavigateFunction) => ({
+    endpoint: '/users/signup/resendEmail',
+    extract: 'user',
+    navParams: { navPath: '/verifyEmail', navFunc: navFunc },
+    postBody: {
+      email: email,
+      name: name,
+    },
+  }),
+
   getAllSubjects: { endpoint: '/subjects', extract: 'allSubjects' },
   getYearsForSubject: (chosenId: string) => ({
     endpoint: `/questions/availableyears?subjectId=${chosenId}`,

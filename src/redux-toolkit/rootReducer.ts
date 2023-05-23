@@ -12,6 +12,7 @@ import {
   getYearsForSubject,
   saveUserScore,
   verifyEmail,
+  resendEmail,
 } from './asyncMethods';
 
 //SLICES
@@ -34,21 +35,33 @@ export default createReducer(initialState, (builder) => {
       questionSlice.reducer,
     );
   });
+
   createExtraReducer(
     builder,
     signInUser as unknown as AsyncThunk<unknown, void, any>,
     'user',
   );
+
   createExtraReducer(
     builder,
     signUpUser as unknown as AsyncThunk<unknown, void, any>,
     'user',
+    'verifyEmail',
   );
+
   createExtraReducer(
     builder,
     verifyEmail as unknown as AsyncThunk<unknown, void, any>,
     'user',
   );
+
+  createExtraReducer(
+    builder,
+    resendEmail as unknown as AsyncThunk<unknown, void, any>,
+    'user',
+    'verifyEmail',
+  );
+
   createExtraReducer(
     builder,
     getUserHistory as unknown as AsyncThunk<unknown, void, any>,

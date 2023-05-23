@@ -10,9 +10,10 @@ import StateType from '../../types/stateTypes';
 interface NavItemsProps {
   style: string;
   fontSize?: string;
+  handleToggleSidebar: () => void;
 }
 
-const NavItems: React.FC<NavItemsProps> = ({ style, fontSize }) => {
+const NavItems: React.FC<NavItemsProps> = ({ style, fontSize, handleToggleSidebar }) => {
   const dispatch = useDispatch();
   const { user } = useSelector((state: StateType) => state);
 
@@ -25,6 +26,7 @@ const NavItems: React.FC<NavItemsProps> = ({ style, fontSize }) => {
           Icon={navItem.Icon}
           linkTxt={navItem.linkTxt}
           fontSize={fontSize}
+          handleToggleSidebar={handleToggleSidebar}
         />
       ))}
       {user && (

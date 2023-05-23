@@ -5,7 +5,6 @@ import { useSelector } from 'react-redux';
 import { Row, Col } from 'react-bootstrap';
 import { ChartData } from 'chart.js';
 import StateType from '../../types/stateTypes';
-
 import 'chart.js';
 import 'chartjs-adapter-date-fns';
 import 'react-chartjs-2';

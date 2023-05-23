@@ -29,5 +29,5 @@
     "src/pages/testPage.tsx",
     "src/pages/testParams.tsx",
     "css.d.ts"
-, "src/pages/emailVerification.tsx"  ],
+, "src/pages/emailVerification.tsx", "src/components/NavbarComponent/NavBarText.tsx"  ],
 }

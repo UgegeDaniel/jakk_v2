@@ -1,5 +1,4 @@
 import React from 'react';
-import { SiMinutemailer } from 'react-icons/si';
 import { MdOutlineAlternateEmail } from 'react-icons/md';
 import { PageWrapper, EmailVerifationProgress } from '../components';
 import { User } from '../types/stateTypes';
