@@ -1,13 +1,9 @@
 import React from 'react';
 import { Spinner } from 'react-bootstrap';
 
-interface LoaderProps {
-    className?: string;
-}
-
-const Loader: React.FC<LoaderProps> = ({ className }) => {
+const Loader: React.FC = () => {
   return (
-    <Spinner as="span" animation="border" size="sm" role="status" className={className} />
+    <Spinner as="span" animation="border" size="sm" role="status" className="mx-2" />
   );
 };
 

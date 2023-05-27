@@ -9,6 +9,7 @@ const handleUserSuccess = (state: StateType, responseData: User) => {
 
 const handleQuestionsSuccess = (state: StateType) => {
   state.timer = true;
+  state.isModal = false;
   state.testSubmitted = false;
 };
 

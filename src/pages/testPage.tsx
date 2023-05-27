@@ -13,22 +13,20 @@ const TestPage: React.FC = () => {
       <PageWrapper
         pageName="Correction"
         Icon={FaSpellCheck}
-        featureTxt="Correct options are highlighted in green"
-      >
-        <TestPageContent />
-      </PageWrapper>
-    );
-  } else {
-    return (
-      <PageWrapper
-        pageName="Ongoing Test"
-        Icon={RxLapTimer}
-        FeatureBar={Timer}
       >
         <TestPageContent />
       </PageWrapper>
     );
   }
+  return (
+    <PageWrapper
+      pageName="Ongoing Test"
+      Icon={RxLapTimer}
+      FeatureBar={Timer}
+    >
+      <TestPageContent />
+    </PageWrapper>
+  );
 };
 
 export default TestPage;

@@ -14,6 +14,7 @@ export const questionSlice = createSlice({
     prevQuestion: questionReducers.prevQuestion,
     nextQuestion: questionReducers.nextQuestion,
     jumpToIndex: questionReducers.jumpToIndex,
+    resetQuestionState: questionReducers.resetQuestionState,
   },
 });
 
@@ -21,7 +22,8 @@ export const {
   setSubjectId, selectYear,
   setShowNotification, selectOption,
   prevQuestion, nextQuestion,
-  jumpToIndex, showModal
+  jumpToIndex, showModal,
+  resetQuestionState
 } = questionSlice.actions;
 
 export default questionSlice.reducer;

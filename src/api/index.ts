@@ -1,57 +1,28 @@
 import axios, { AxiosResponse } from 'axios';
 import { baseUrl, getConfig } from './config';
-import { NavigateFunction } from 'react-router-dom';
+import {
+  RequestParams,
+  onSuccessFxnType,
+  onFailureType,
+  handlerType,
+} from '../types/requestTypes';
 
-export interface RequestParams {
-  endpoint: string;
-  postBody?: object;
-  extract: string;
-  navParams?: {
-    navFunc: NavigateFunction;
-    navPath: string;
-  };
-}
-
-export interface SuccessResponse<T> {
-  responseData: T;
-  responseError: null;
-}
-
-export interface FailureResponse {
-  responseData: null;
-  responseError: string | object;
-}
-
-const onSuccess = <T>(
-  responseData: T,
-  navParams?: {
-    navFunc: NavigateFunction;
-    navPath: string;
-  },
-): SuccessResponse<T> => {
+const onSuccess: onSuccessFxnType = (responseData, navParams) => {
   if (responseData && navParams) {
     navParams.navFunc(navParams.navPath);
   }
   return { responseData, responseError: null };
 };
 
-const onFailure = (err: {
-  response: {
-    data: {
-      msg?: string;
-      errors?: string[];
-    };
-  };
-  message: string;
-}): FailureResponse => {
+const onFailure: onFailureType = (err) => {
   const error = err.response?.data || err.message;
   const responseError = error.msg || error.errors || error;
   return { responseData: null, responseError };
 };
 
-export const axiosGetRequestHandler = async <T>(
+export const axiosGetRequestHandler: handlerType = async (
   reqParams: RequestParams,
-): Promise<SuccessResponse<T> | FailureResponse> => {
+) => {
   const { endpoint, extract, navParams } = reqParams;
   const config = getConfig();
   try {
@@ -60,17 +31,14 @@ export const axiosGetRequestHandler = async <T>(
       config,
     );
     const responseData = await data[extract];
-    return onSuccess<T>(responseData, navParams);
+    return onSuccess(responseData, navParams);
   } catch (err) {
     return onFailure(err);
   }
 };
 
-export const axiosPostRequestHandler = async <T>(
-  reqParams: RequestParams,
-): Promise<SuccessResponse<T> | FailureResponse> => {
+export const axiosPostRequestHandler: handlerType = async (reqParams) => {
   const { endpoint, postBody, extract, navParams } = reqParams;
-  console.log({ endpoint, postBody });
   const config = getConfig();
   try {
     const { data }: AxiosResponse = await axios.post(
@@ -79,8 +47,7 @@ export const axiosPostRequestHandler = async <T>(
       config,
     );
     const responseData = extract === 'user' ? await data : await data[extract];
-    console.log({ responseData, navParams });
-    return onSuccess<T>(responseData, navParams);
+    return onSuccess(responseData, navParams);
   } catch (err) {
     return onFailure(err);
   }

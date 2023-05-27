@@ -1,7 +1,7 @@
 import React from 'react';
 import { Card } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
-import Btn from '../Btn/Btn';
+import Button from '../Button/Button';
 
 const ErrorPageContent: React.FC = () => {
   return (
@@ -9,8 +9,8 @@ const ErrorPageContent: React.FC = () => {
       <Card.Body>
         <Card.Title>Sorry Route Not Found</Card.Title>
         <Card.Text>
-                    You have requested a route that does not exist.
-          <Link to="/"><Btn txt="Go Back Home" /></Link>
+          You have requested a route that does not exist.
+          <Link to="/"><Button txt="Go Back Home" /></Link>
         </Card.Text>
       </Card.Body>
     </Card>

@@ -28,6 +28,8 @@
     "src/pages/home.tsx",
     "src/pages/testPage.tsx",
     "src/pages/testParams.tsx",
-    "css.d.ts"
-, "src/pages/emailVerification.tsx", "src/components/NavbarComponent/NavBarText.tsx"  ],
+    "css.d.ts",
+    "src/pages/emailVerification.tsx",
+    "src/components/NavBar/NavBarText.tsx"
+  ],
 }

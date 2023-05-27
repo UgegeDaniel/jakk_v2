@@ -5,11 +5,17 @@ import { FaLinkedinIn } from 'react-icons/fa';
 import { SlSocialTwitter } from 'react-icons/sl';
 
 const PageFooter: React.FC = () => (
-  <Card.Footer className="text-muted d-flex justify-content-end">
+  <Card.Footer className="text-muted d-flex justify-content-end fixed-bottom bg-dark">
     <span className="mb-0 font-weight-light font-italic">&copy; Copyright, 2023</span>
-    <FiGithub className="display-6 fs-2 ml-3 text-primary" />
-    <SlSocialTwitter className="display-6 fs-2 ml-3 text-primary" />
-    <FaLinkedinIn className="display-6 fs-2 ml-3 text-primary" />
+    <a href="https://github.com/UgegeDaniel">
+      <FiGithub className="display-6 fs-2 ml-3 text-primary" />
+    </a>
+    <a href="https://twitter.com/ugege_daniel">
+      <SlSocialTwitter className="display-6 fs-2 ml-3 text-primary" />
+    </a>
+    <a href="https://www.linkedin.com/in/daniel-ugege-50a499227/">
+      <FaLinkedinIn className="display-6 fs-2 ml-3 text-primary" />
+    </a>
   </Card.Footer>
 );
 

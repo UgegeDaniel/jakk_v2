@@ -11,7 +11,7 @@ function ToastNotification() {
   const dispatch = useDispatch();
 
   return (
-    <ToastContainer className="p-3" position="top-end" style={{ zIndex: 10000 }}>
+    <ToastContainer className='p-3' position='top-end' style={{ zIndex: 10000 }}>
       {notifications.map((notification, index) => {
         return (
           notification.msg && (
@@ -29,7 +29,7 @@ function ToastNotification() {
                 ) : (
                   <FaCheck className={`rounded me-2 text-${notification.style}`} />
                 )}
-                <strong className="me-auto">{notification.style === 'success' ? 'Success' : 'Error'}</strong>
+                <strong className='me-auto'>{notification.style === 'success' ? 'Success' : 'Error'}</strong>
                 <small>{notification.msg}</small>
               </Toast.Header>
             </Toast>

@@ -17,17 +17,13 @@ export const urls = {
   signup: (navFunc: NavigateFunction) => ({
     endpoint: '/users/signup',
     extract: 'user',
-    navParams: { navPath: '/verifyEmail', navFunc: navFunc },
+    navParams: { navPath: '/unverified', navFunc: navFunc },
   }),
 
-  resendEmail: (email: string, name: string, navFunc: NavigateFunction) => ({
+  resendEmail: (navFunc: NavigateFunction) => ({
     endpoint: '/users/signup/resendEmail',
     extract: 'user',
-    navParams: { navPath: '/verifyEmail', navFunc: navFunc },
-    postBody: {
-      email: email,
-      name: name,
-    },
+    navParams: { navPath: '/unverified', navFunc: navFunc },
   }),
 
   getAllSubjects: { endpoint: '/subjects', extract: 'allSubjects' },
@@ -59,7 +55,7 @@ export const urls = {
     };
   },
 
-  verifyEmail: (ref: string | undefined, navFunc: NavigateFunction) => {
+  verifyEmail: (ref: string | null, navFunc: NavigateFunction) => {
     return {
       endpoint: '/users/signup/verifyEmail',
       extract: 'user',

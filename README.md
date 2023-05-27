@@ -1,70 +1,124 @@
-# Getting Started with Create React App
+# Moviemania
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This is a React app to allows students to take objective tests in different subjects for the O-level Nigerian examinations. This app offers an accessible and intuitive platform for progressive learning to students preparing for various O-level examinations. Its a simple app to demostrate the basic features of the angular framework.
 
-## Available Scripts
+## Table of Contents
 
-In the project directory, you can run:
+- [App Features](#movie-features)
+- [Concepts and Apis Employed](#concepts-and-apis-employed)
+- [Built with](#built-with)
+- [Mock Designs](#mock-designs)
+- [Live Preview](#live-preview)
+- [Required Installations](#required-installations)
+- [Installation of This App](#instalation)
+- [License](#license)
+- [Contact](#contact)
+- [Acknowledgements](#acknowledgements)
 
-### `npm start`
+<!-- Movie features -->
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Movie Features
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- A user upon visiting the app, sees a home page with a button to either sign up or sign in depending on whether or not they have an existing account.
+- Users can also take test in about 17 subjects under different available years .
+- Users progress is stored and displayed on th dashboard.
 
-### `npm test`
+<!-- concepts and apis employed -->
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Concepts and APIs Employed
 
-### `npm run build`
+- The API employed for movie information was gotten developed by TMDB [here](https://www.github.com/ugegedaniel/).
+- Official API documentation for the movie db can be found [here](https://developers.themoviedb.org/3)
+- This app demonstrates the use of basic concepts of Angular Application 
+  - Modules
+  - Compnents structuring 
+  - Shared components
+  - Pipes
+  - Guards
+  - Routing
+  - Two way binding 
+  - Services 
+  - HttpModule
+  - rxjs (Observables)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+<!-- BUILT wITH -->
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Built with
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- HTML5
+- CSS3
+- JavaScript
+- Angular
 
-### `npm run eject`
+<!-- MOCK DESIGNS -->
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## Mock Designs
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+See mock design guides for the app below;
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+- Home Screen.
+![Image](/src/assets/mocks/home-screen.png)
+- Movie Category List Screen.
+![Image](/src/assets/mocks/category-screen.png)
+- Single Movie View Screen.
+![Image](/src/assets/mocks/single-view-screen.png)
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+<!-- LIVE PREVIEW -->
 
-## Learn More
+## Live Preview
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Find the live version [here](https://moviemania-app.netlify.app/).
+Below is a screenshot of what it looks like.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+https://user-images.githubusercontent.com/31358867/142187908-396f7f76-3304-4818-851b-148cf93bfec9.mp4
 
-### Code Splitting
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+<!-- REQUIRED INSTALLATION -->
 
-### Analyzing the Bundle Size
+## Required Installations
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+- Npm
 
-### Making a Progressive Web App
+<!-- INSTALLATION -->
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+## Installation of This Repository
 
-### Advanced Configuration
+Once you have installed the required packages shown on the [Required Installations](#required-installations), proceed with the following steps
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+Clone the Repository
 
-### Deployment
+```Shell
+your@pc:~$ git clone git@github.com:frankly034/moviemania-app.git
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+Move to the downloaded folder
 
-### `npm run build` fails to minify
+```Shell
+your@pc:~$ cd moviemania
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Install all packages
+
+```Shell
+your@pc:~$ npm install
+```
+
+Open the app
+
+```Shell
+your@pc:~$ npm start
+```
+
+## License
+
+Distributed under the MIT License. See `LICENSE` for more information.
+
+<!-- CONTACT -->
+
+## Contact
+
+- 🇳🇬 Lewis Ugege - franklynugege@gmail.com | [Github Account](https://github.com/frankly034) | [Twitter](https://twitter.com/@wizlulu) | [Linkedin](https://linkedin.com/in/lewis-ugege) | 
+
+## Acknowledgements
+
+- <a href="https://www.themoviedb.org/"> TMDB</a> and God Almighty .

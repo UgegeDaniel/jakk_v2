@@ -14,11 +14,13 @@ const Timer = () => {
   const state = useSelector((state: StateType) => state);
   const dispatch = useDispatch();
   expiryTimestamp.setSeconds(expiryTimestamp.getSeconds() + 7200);
+
   const { seconds, minutes, hours, start } = useTimer({
     expiryTimestamp,
     onExpire: () => dispatch(saveUserScore(urls.saveScore(state)) as unknown as AnyAction),
   });
   const timerCallback = useCallback(() => start, [start]);
+  
   useEffect(() => {
     timer && timerCallback();
   }, [timer, timerCallback]);

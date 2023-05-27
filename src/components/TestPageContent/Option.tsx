@@ -1,17 +1,11 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectOption } from '../../redux-toolkit/features/questionSlice';
-import { optionStyle } from './testPageUtils';
+import { optionLetters, optionStyle } from './testPageUtils';
 import styles from '../../styles';
 import useQuestions from './useQuestion';
 import StateType from '../../types/stateTypes';
-
-const optionLetters = ['A', 'B', 'C', 'D', 'E'];
-
-interface OptionProps {
-  index: number;
-  option: string;
-}
+import { OptionProps } from '../../types/propTypes';
 
 const Option: React.FC<OptionProps> = ({ index, option }) => {
   const { id, answer, userChoice } = useQuestions();

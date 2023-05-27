@@ -4,6 +4,7 @@ const questionReducers = {
   setSubjectId: (state: StateType, action: { payload: { chosenSubject: string; chosenId: string; }; }) => {
     state.testParams.chosenSubject = action.payload.chosenSubject;
     state.testParams.subjectId = action.payload.chosenId;
+    state.testParams.chosenYear = '';
   },
   selectYear: (state: StateType, action: { payload: string; }) => {
     state.testParams.chosenYear = action.payload;
@@ -48,6 +49,14 @@ const questionReducers = {
   },
   jumpToIndex: (state: StateType, action: { payload: number; }) => {
     state.currentIndex = action.payload;
+  },
+  resetQuestionState: (state: StateType ) => {
+    state.testSubmitted = false;
+    state.testStarted = false;
+    state.testSubmitted = false;
+    state.currentIndex = 0;
+    state.result = { attempted: 0, correct: 0, score: 0 };
+    state.answeredQuestions = [];
   },
 };
 export default questionReducers;
