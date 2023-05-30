@@ -4,7 +4,7 @@ import Button from '../Button/Button';
 import FormHeader from './FormHeader';
 import Inputs from './Inputs';
 import useForm from './useForm';
-import { formDataType, handleSubmitFxnType } from '../../types/utilityTypes';
+import { formDataType, formEventType, handleSubmitFxnType } from '../../types/utilityTypes';
 
 const Form: React.FC = () => {
   const formData: formDataType = useForm();
@@ -14,12 +14,12 @@ const Form: React.FC = () => {
 
   return (
     <BootstrapForm
-      onSubmit={(event) => handleFormSubmit(event)}
+      onSubmit={(event: formEventType) => handleFormSubmit(event)}
       className='p-3'
       noValidate validated={formData.validated}
     >
-      <FormHeader formData={formData}/>
-      <Inputs formData={formData}/>
+      <FormHeader formData={formData} />
+      <Inputs formData={formData} />
       <Button
         txt={formData.isSignIn ? 'Sign In' : 'Sign Up'}
         style='mt-2'

@@ -26,6 +26,7 @@ const NavBar: React.FC = () => {
       <Container>
         <BootstrapNavbar.Brand href="/">
           <img
+            alt='logo'
             src={appLogo}
             className="rounded"
             style={{ width: '80px', height: 'auto' }} />

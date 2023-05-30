@@ -31,5 +31,5 @@
     "css.d.ts",
     "src/pages/emailVerification.tsx",
     "src/components/NavBar/NavBarText.tsx"
-  ],
+, "setupTests.ts"  ],
 }

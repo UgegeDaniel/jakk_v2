@@ -1,12 +1,14 @@
-import { NavigateFunction } from 'react-router-dom';
-import { Dispatch } from 'redux';
 import { AnyAction } from '@reduxjs/toolkit';
-import { FormikValues, FormikHelpers } from 'formik';
+import { FormikValues } from 'formik';
 import { object, Schema } from 'yup';
 import { signUpUser, signInUser } from '../../redux-toolkit/asyncMethods';
 import { urls } from '../../utils/urls';
 import validationRules from '../../utils/validation';
-import { formParamsType, submitCallbackType } from '../../types/utilityTypes';
+import {
+  formParamsType,
+  submitCallbackType,
+  sunmitHandlerType,
+} from '../../types/utilityTypes';
 
 const getValidationSchema = (isSignIn: boolean): Schema<FormikValues> =>
   object(validationRules(isSignIn));
@@ -21,18 +23,17 @@ const signUpSuccess: submitCallbackType = (dispatch, values, navigate) => {
   dispatch(signUpUser(signUpParams) as unknown as AnyAction);
 };
 
-const submitHandler =
-  (dispatch: Dispatch, isSignIn: boolean, navigate: NavigateFunction) =>
-    (values: FormikValues, onSubmitParams: FormikHelpers<FormikValues>) => {
-      if (isSignIn) {
-        signInSuccess(dispatch, values, navigate);
-      }
-      if (!isSignIn) {
-        signUpSuccess(dispatch, values, navigate);
-      }
-      onSubmitParams.setSubmitting(true);
-      onSubmitParams.resetForm();
-    };
+const submitHandler: sunmitHandlerType =
+  (dispatch, isSignIn: boolean, navigate) => (values, onSubmitParams) => {
+    if (isSignIn) {
+      signInSuccess(dispatch, values, navigate);
+    }
+    if (!isSignIn) {
+      signUpSuccess(dispatch, values, navigate);
+    }
+    onSubmitParams.setSubmitting(true);
+    onSubmitParams.resetForm();
+  };
 
 const formParams: formParamsType = (isSignIn, dispatch, navigate, formData) => {
   const validationSchema = getValidationSchema(isSignIn);

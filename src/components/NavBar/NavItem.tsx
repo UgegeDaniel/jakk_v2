@@ -24,9 +24,7 @@ const NavItem: React.FC<NavItemProps> = (props) => {
           cursor: 'pointer'
         }}
       >
-        <Icon className="mx-1" />
-        {linkTxt}
-      </Link>
+        <Icon className="mx-1" />{linkTxt}</Link>
     </span>
   );
 };

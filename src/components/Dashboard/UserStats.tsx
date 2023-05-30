@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux';
 import { Row, Col } from 'react-bootstrap';
 import { Bar, Pie } from 'react-chartjs-2';
 import 'chart.js';
-import 'chartjs-adapter-date-fns';
+// import 'chartjs-adapter-date-fns';
 import 'react-chartjs-2';
 import { pieData, barData, barOptions, pieOptions } from './chartUtils';
 import { ChartData } from 'chart.js';

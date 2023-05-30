@@ -1,5 +1,5 @@
 import { ChartData } from 'chart.js';
-import { UserHistory } from './stateTypes';
+import StateType, { UserHistory } from './stateTypes';
 import { Dispatch } from 'redux';
 import React, { MouseEventHandler } from 'react';
 import { NavigateFunction } from 'react-router-dom';
@@ -15,6 +15,8 @@ export type formDataType = {
   validated: boolean;
   handleSubmit: (event: React.FormEvent<HTMLFormElement>) => void;
 };
+
+export type formEventType = React.FormEvent<HTMLFormElement>
 
 export type handleSubmitFxnType = (
   event: React.FormEvent<HTMLFormElement>,
@@ -36,3 +38,7 @@ export type formParamsType = (
   validationSchema: Schema<FormikValues, any, any, ''>;
   onSubmit: (values: FormikValues, onSubmitParams: FormikHelpers<FormikValues>) => void;
 };
+
+export type sunmitHandlerType = (dispatch: Dispatch, isSignIn: boolean, navigate: NavigateFunction) => (values: FormikValues, onSubmitParams: FormikHelpers<FormikValues>) => void
+
+export type mockStateType = Partial<StateType>

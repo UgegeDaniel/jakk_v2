@@ -10,6 +10,7 @@ const Button: React.FC<ButtonProps> = (props) => {
   const { disabled, onClick, txt, style, variant } = props;
   return (
     <BootstrapButton
+      role="button"
       variant={variant || 'primary'}
       type="submit"
       className={`btn ${style || 'btn-sm'}`}

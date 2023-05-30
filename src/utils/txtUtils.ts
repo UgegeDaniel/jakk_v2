@@ -2,10 +2,7 @@ import { MdOutlineClass } from 'react-icons/md';
 import { GiProgression } from 'react-icons/gi';
 import { FiUserCheck } from 'react-icons/fi';
 
-export const aboutTxt = `Welcome to our app, where you can take objective tests in different subjects for the O-level Nigerian examinations. Our app provides you with a seamless experience as you sign up or log in to access the vast collection of questions available.
-With our app, you can take tests in subjects such as English Language, Mathematics, Physics, Chemistry, Biology, and more. You can save your progress as you go and keep track of your results over time.
-Our app is built with a Postgres database, Express/Typescript server, and a React/React Bootstrap/Redux Toolkit frontend to ensure a smooth and user-friendly experience. Our team has put in a lot of effort to make sure that the app is intuitive and easy to use, so you can focus on studying and improving your skills.
-Whether you're preparing for the O-level Nigerian examinations or just looking to improve your knowledge in a particular subject, our app is here to help. Sign up or log in today to start your learning journey!`;
+export const aboutTxt = 'Welcome to our app, where you can take objective tests in different subjects for the O-level Nigerian examinations. Our app provides you with a seamless experience as you sign up or log in to access the vast collection of questions available. With our app, you can take tests in subjects such as English Language, Mathematics, Physics, Chemistry, Biology, and more. You can save your progress as you go and keep track of your results over time. Our app is built with a Postgres database, Express/Typescript server, and a React/React Bootstrap/Redux Toolkit frontend to ensure a smooth and user-friendly experience. Our team has put in a lot of effort to make sure that the app is intuitive and easy to use, so you can focus on studying and improving your skills. Whether you\'re preparing for the O-level Nigerian examinations or just looking to improve your knowledge in a particular subject, our app is here to help. Sign up or log in today to start your learning journey!';
 
 export const homePageTxt = [
   {

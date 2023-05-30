@@ -16,7 +16,7 @@ const Inputs: React.FC<{ formData: formDataType }> = ({ formData }) => {
       <div className={fieldContainerStyle}>
         <Input type='password' name='password' formik={formData.formik} />
         {!formData.isSignIn &&
-                    <Input type='password' name='confirmPassword' formik={formData.formik} />
+          <Input type='password' name='confirmPassword' formik={formData.formik} />
         }
       </div>
     </React.Fragment>
