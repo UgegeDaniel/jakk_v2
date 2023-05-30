@@ -4,40 +4,12 @@ import NavBar from '../../NavBar/NavBar';
 import '@testing-library/jest-dom/extend-expect';
 import { mockDispatch, mockNavigate, mockUseForm, mockMediaQuery } from '../../_mocks/hooksMock';
 import MockProviders from '../../_mocks/Providers';
-import { mockStateType } from '../../../types/utilityTypes';
-
-const mockState: mockStateType = {
-    user: null,
-    isSignIn: false,
-    userHistory: [],
-    formData: {
-        email: 'test@test.com',
-        name: 'test',
-        password: 'ABCabc1',
-        confirmPassword: 'ABCabc1'
-    }
-}
-
-const unverifiedUser = {
-    user: {
-        email: 'johnDoe@gmail.com',
-        name: 'John Doe',
-        verified: false
-    },
-}
-
-const verifiedUser = {
-    user: {
-        email: 'johnDoe@gmail.com',
-        name: 'John Doe',
-        verified: true
-    },
-}
+import { mockState, unverifiedUser, verifiedUser } from '../../_mocks/mockStates';
 
 jest.mock('../../_mocks/hooksMock');
 describe('NavBar component', () => {
     beforeEach(() => {
-        mockDispatch.mockImplementation((f: (arg0: mockStateType) => any) => f(mockState));
+        mockDispatch.mockImplementation((f: (arg0: any) => any) => f(mockState));
         mockNavigate.mockImplementation((f: (arg0: any) => any) => f(mockState));
         mockUseForm.mockImplementation((f: (arg0: any) => any) => f(mockState));
         mockMediaQuery.mockImplementation((f: (arg0: any) => any) => f(mockState));

@@ -5,27 +5,15 @@ import '@testing-library/jest-dom/extend-expect';
 import { signUpUser } from '../../../redux-toolkit/asyncMethods';
 import { mockDispatch, mockNavigate, mockUseForm } from '../../_mocks/hooksMock';
 import MockProviders from '../../_mocks/Providers';
-import { mockStateType } from '../../../types/utilityTypes';
 import user from '@testing-library/user-event';
-
-const mockState: mockStateType = {
-    user: null,
-    isSignIn: false,
-    userHistory: [],
-    formData: {
-        email: 'test@test.com',
-        name: 'test',
-        password: 'ABCabc1',
-        confirmPassword: 'ABCabc1'
-    }
-}
+import { mockStateWFormData } from '../../_mocks/mockStates';
 
 jest.mock('../../_mocks/hooksMock');
 describe('Form component', () => {
     beforeEach(() => {
-        mockDispatch.mockImplementation((f: (arg0: mockStateType) => any) => f(mockState));
-        mockNavigate.mockImplementation((f: (arg0: any) => any) => f(mockState));
-        mockUseForm.mockImplementation((f: (arg0: any) => any) => f(mockState));
+        mockDispatch.mockImplementation((f: (arg0: any) => any) => f(mockStateWFormData));
+        mockNavigate.mockImplementation((f: (arg0: any) => any) => f(mockStateWFormData));
+        mockUseForm.mockImplementation((f: (arg0: any) => any) => f(mockStateWFormData));
     });
     afterEach(() => {
         jest.clearAllMocks();
@@ -33,7 +21,7 @@ describe('Form component', () => {
 
     it('dispatches submit handler action on form submit', async () => {
         user.setup();
-        render(<MockProviders mockStore={mockState}><Form /></MockProviders>);
+        render(<MockProviders mockStore={mockStateWFormData}><Form /></MockProviders>);
         const submitButton = screen.getByRole('button', { name: 'Sign Up' })
         user.click(submitButton);
         const signInParams = {
@@ -49,7 +37,7 @@ describe('Form component', () => {
 
     it('does not dispatches submit handler action on form submit', async () => {
         user.setup();
-        render(<MockProviders mockStore={{...mockState, name: 'Test'}}><Form /></MockProviders>);
+        render(<MockProviders mockStore={{...mockStateWFormData, name: 'Test'}}><Form /></MockProviders>);
         const submitButton = screen.getByRole('button', { name: 'Sign Up' })
         user.click(submitButton);
         const signInParams = {

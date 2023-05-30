@@ -9,7 +9,7 @@ import { AnyAction } from '@reduxjs/toolkit';
 import { ParamsModalProps } from '../../types/propTypes';
 
 const ParamsModal: React.FC<ParamsModalProps> = ({ startTest }) => {
-  const { allSubjects, isLoading } = useSelector((state: StateType) => state);
+  const { allSubjects } = useSelector((state: StateType) => state);
   const dispatch = useDispatch();
   const fetchSubjects = () => {
     dispatch(getAllSubjects(urls.getAllSubjects) as unknown as AnyAction);

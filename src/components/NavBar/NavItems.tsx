@@ -1,6 +1,5 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Nav } from 'react-bootstrap';
 import NavItem from './NavItem';
 import Button from '../Button/Button';
 import StateType from '../../types/stateTypes';

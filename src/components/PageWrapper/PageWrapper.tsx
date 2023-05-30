@@ -23,7 +23,7 @@ const PageWrapper: React.FC<PageWrapperProps> = ({
   }, [location.pathname]);
 
   return (
-    <Container className='px-3 pb-5 pt-3'>
+    <Container className='px-3 pb-5 pt-3 my-auto'>
       <h3 className='page-title display-6'>
         <Icon className={`text-${iconStyle || 'primary'}`} /> {pageName}
       </h3>

@@ -6,17 +6,7 @@ import { getUserHistory } from '../../../redux-toolkit/asyncMethods';
 import { urls } from '../../../utils/urls';
 import MockProviders from '../../_mocks/Providers';
 import { mockDispatch } from '../../_mocks/hooksMock';
-
-const mockState = {
-    user: {
-        user: {
-            email: 'johnDoe@gmail.com',
-            name: 'John Doe',
-            verified: true
-        },
-    },
-    userHistory: [],
-}
+import { mockState } from '../../_mocks/mockStates';
 
 jest.mock('../../_mocks/hooksMock')
 describe('Dashboard component', () => {

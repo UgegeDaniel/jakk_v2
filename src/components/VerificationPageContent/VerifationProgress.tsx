@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { Card } from 'react-bootstrap';
-import { useNavigate, useParams, useLocation } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import StateType from '../../types/stateTypes';
 import { AnyAction } from '@reduxjs/toolkit';
