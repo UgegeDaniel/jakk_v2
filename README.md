@@ -1,20 +1,7 @@
 # Description
 
 JAKK is a web application designed to help users prepare for Nigerian O-level examinations. It provides a platform for students to practice objective tests based on past questions, track their progress, and improve their performance. With a user-friendly interface and comprehensive features, App Name aims to enhance exam preparation and boost confidence for students.
-This app offers an accessible and intuitive platform for progressive learning to students preparing for various O-level examinations. Its a simple app to demostrate the basic features of the angular framework.
-
-## Table of Contents
-
-- [App Features]
-- [Concepts and Apis Employed]
-- [Built with]
-- [Mock Designs]
-- [Live Preview]
-- [Required Installations]
-- [Installation of This App]
-- [License]
-- [Contact]
-- [Acknowledgements]
+This app offers an accessible and intuitive platform for progressive learning to students preparing for various O-level examinations. Its a simple app to demostrate the basic features of the React library.
 
 <!-- App features -->
 
@@ -101,23 +88,11 @@ Styling and UI Components
 
 ## Mock Designs
 
-See mock design guides for the app below;
-
-- Home Screen.
-  ![Image](/src/assets/mocks/home-screen.png)
-- Movie Category List Screen.
-  ![Image](/src/assets/mocks/category-screen.png)
-- Single Movie View Screen.
   ![Image](/src/assets/mocks/single-view-screen.png)
 
 <!-- LIVE PREVIEW -->
 
 ## Live Preview
-
-Find the live version [here](https://moviemania-app.netlify.app/).
-Below is a screenshot of what it looks like.
-
-https://user-images.githubusercontent.com/31358867/142187908-396f7f76-3304-4818-851b-148cf93bfec9.mp4
 
 <!-- REQUIRED INSTALLATION -->
 
@@ -134,13 +109,13 @@ Once you have installed the required packages shown on the [Required Installatio
 Clone the Repository
 
 ```Shell
-your@pc:~$ git clone git@github.com:frankly034/moviemania-app.git
+your@pc:~$ git clone git@github.com:UgegeDaniel/jakk_v2.git
 ```
 
 Move to the downloaded folder
 
 ```Shell
-your@pc:~$ cd moviemania
+your@pc:~$ cd jakk_v2
 ```
 
 Install all packages
