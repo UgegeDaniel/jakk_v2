@@ -5,7 +5,7 @@ import { UserHistory } from '../types/stateTypes';
 export const capitalizeFirstLetter = (word: string) =>
   word.charAt(0).toUpperCase() + word.slice(1);
 export const milliSecsToMoment = (ms: string) =>
-  moment(new Date(Number(ms)).toISOString()).format('llll');
+  moment(parseInt(ms, 10)).format('llll');
 
 export const chartColors = [
   '#FFEAD2',
