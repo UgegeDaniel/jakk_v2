@@ -7,6 +7,8 @@ import 'chart.js';
 import 'react-chartjs-2';
 import { pieData, barData, barOptions, pieOptions } from './chartUtils';
 import { ChartData } from 'chart.js';
+import { Chart, registerables } from 'chart.js';
+Chart.register(...registerables);
 import StateType from '../../types/stateTypes';
 
 const NoUserHistory = () => <p className="lead text-secondary">No user History to Display</p>;
