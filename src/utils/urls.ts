@@ -11,7 +11,7 @@ export const urls = {
   signin: (navFunc: NavigateFunction) => ({
     endpoint: '/student/signin',
     extract: 'user',
-    navParams: { navPath: existingPath!, navFunc: navFunc },
+    navParams: { navPath: '/dashboard', navFunc: navFunc },
   }),
 
   signup: (navFunc: NavigateFunction) => ({
@@ -45,7 +45,7 @@ export const urls = {
 
   saveScore: (state: StateType) => {
     return {
-      endpoint: '/users/score/save',
+      endpoint: '/student/score/save',
       extract: 'newScore',
       postBody: {
         subjectId: `${state.testParams.subjectId}`,
