@@ -41,9 +41,9 @@ const NavBar: React.FC = () => {
           </Nav>
         )}
       </Container>
-      {isSmallScreen && user &&
+      {isSmallScreen && user && sidebarOpen &&
         <Sidebar
-          handleToggleSidebar={() => setSidebarOpen(!sidebarOpen)}
+          handleCloseSidebar={() => setSidebarOpen(false)}
           sidebarOpen={sidebarOpen}
         />
       }

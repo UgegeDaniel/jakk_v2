@@ -7,21 +7,21 @@ const existingPath = localStorage.getItem('path')
   : '/';
 
 export const urls = {
-  getUserHistory: { endpoint: '/users/history', extract: 'userHistory' },
+  getUserHistory: { endpoint: '/student/history', extract: 'userHistory' },
   signin: (navFunc: NavigateFunction) => ({
-    endpoint: '/users/signin',
+    endpoint: '/student/signin',
     extract: 'user',
     navParams: { navPath: existingPath!, navFunc: navFunc },
   }),
 
   signup: (navFunc: NavigateFunction) => ({
-    endpoint: '/users/signup',
+    endpoint: '/student/signup',
     extract: 'user',
     navParams: { navPath: '/unverified', navFunc: navFunc },
   }),
 
   resendEmail: (navFunc: NavigateFunction) => ({
-    endpoint: '/users/signup/resendEmail',
+    endpoint: '/student/signup/resendEmail',
     extract: 'user',
     navParams: { navPath: '/unverified', navFunc: navFunc },
   }),
@@ -57,7 +57,7 @@ export const urls = {
 
   verifyEmail: (ref: string | null, navFunc: NavigateFunction) => {
     return {
-      endpoint: '/users/signup/verifyEmail',
+      endpoint: '/student/signup/verifyEmail',
       extract: 'user',
       postBody: {
         ref,

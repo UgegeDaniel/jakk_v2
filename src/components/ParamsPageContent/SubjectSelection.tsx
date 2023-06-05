@@ -1,4 +1,4 @@
-import { Accordion } from 'react-bootstrap';
+import { Accordion, Container } from 'react-bootstrap';
 import { useSelector } from 'react-redux';
 import { capitalizeFirstLetter } from '../../utils';
 import ToggeleSubjectAccordion from './ToggeleSubjectAccordion';
@@ -14,7 +14,7 @@ const SubjectsSelection: React.FC<SubjectSelectionProps> = ({ startTest }) => {
   const { allSubjects } = useSelector((state: StateType) => state);
   const { testParams } = useSelector((state: StateType) => state);
   const { chosenYear, chosenSubject } = testParams;
-  
+
   return (
     <Accordion>
       {allSubjects.map((subject) => (
@@ -32,7 +32,6 @@ const SubjectsSelection: React.FC<SubjectSelectionProps> = ({ startTest }) => {
               txt='Proceed to Test'
             />}
         </ToggeleSubjectAccordion>
-
       ))}
     </Accordion>
   );

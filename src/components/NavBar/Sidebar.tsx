@@ -6,7 +6,7 @@ import { FaTimes } from 'react-icons/fa';
 import styles from '../../styles';
 import { SideBarProps } from '../../types/propTypes';
 
-const Sidebar: React.FC<SideBarProps> = ({ sidebarOpen, handleToggleSidebar }) => {
+const Sidebar: React.FC<SideBarProps> = ({ sidebarOpen, handleCloseSidebar }) => {
   const sidebarStyle = `sidebar ${sidebarOpen ? 'open' : ''} bg-dark ${styles.flex}`;
   return (
     <Container
@@ -14,12 +14,12 @@ const Sidebar: React.FC<SideBarProps> = ({ sidebarOpen, handleToggleSidebar }) =
       className={sidebarStyle}>
       <FaTimes
         className={styles.redBtn}
-        onClick={handleToggleSidebar}
+        onClick={handleCloseSidebar}
       />
       <NavItems
         style={'d-flex flex-column'}
         fontSize="fs-6"
-        handleToggleSidebar={handleToggleSidebar}
+        handleToggleSidebar={handleCloseSidebar}
       />
     </Container>
   );

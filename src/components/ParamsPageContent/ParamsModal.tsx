@@ -1,8 +1,9 @@
+import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { Container } from 'react-bootstrap';
 import { Modal, Button } from '../index';
 import { getAllSubjects } from '../../redux-toolkit/asyncMethods';
 import SubjectsSelection from './SubjectSelection';
-import React, { useEffect } from 'react';
 import StateType from '../../types/stateTypes';
 import { urls } from '../../utils/urls';
 import { AnyAction } from '@reduxjs/toolkit';
@@ -29,9 +30,10 @@ const ParamsModal: React.FC<ParamsModalProps> = ({ startTest }) => {
       openModalTxt="Pick a Subject and Year"
       modalHeaderTxt="Pick a Subject and Year"
       btnVariant="outline-primary"
-      onBtnClick={fetchSubjects}
     >
-      {(allSubjects?.length > 0) ? <SubjectsSelection startTest={startTest} /> : <NoSubjects />}
+      <Container style={{ overflow: 'auto', height: '60vh' }}>
+        {(allSubjects?.length > 0) ? <SubjectsSelection startTest={startTest} /> : <NoSubjects />}
+      </Container>
     </Modal>
   );
 };

@@ -86,7 +86,7 @@ export interface NavItemsProps {
 }
 
 export interface SideBarProps {
-  handleToggleSidebar: () => void;
+  handleCloseSidebar: () => void;
   sidebarOpen: boolean;
 }
 
