@@ -45,12 +45,13 @@ export const urls = {
 
   saveScore: (state: StateType) => {
     return {
-      endpoint: '/student/score/save',
-      extract: 'newScore',
+      endpoint: '/student/submitTest',
+      extract: 'result',
       postBody: {
         subjectId: `${state.testParams.subjectId}`,
         score: `${state.result.score}`,
         year: `${state.testParams.chosenYear}`,
+        userQuestions: state.questions
       },
     };
   },

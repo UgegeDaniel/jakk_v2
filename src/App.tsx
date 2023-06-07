@@ -13,7 +13,6 @@ const breakPoints = ['xxxl', 'xxl', 'xl', 'lg', 'md', 'sm', 'xs', 'xxs'];
 function App() {
   const { user } = useSelector((state) => state) as User;
   const verifiedUser = user && user.user.verified;
-  const unVerifiedUser = user && !user.user.verified;
 
   return (
     <Router>
@@ -29,8 +28,8 @@ function App() {
           <Route path='/dashboard' element={verifiedUser ? <Dashboard /> : <Navigate to='/' />} />
           <Route path='/testparams' element={verifiedUser ? <TestParams /> : <Navigate to='/' />} />
           <Route path='/test' element={verifiedUser ? <TestPage /> : <Navigate to='/' />} />
-          <Route path='/unverified' element={unVerifiedUser ? <UnVerifiedUser /> : <Navigate to='/' />} />
-          <Route path='/verifyEmail' element={unVerifiedUser ? <EmailVerification /> : <Navigate to='/' />} />
+          <Route path='/unverified' element={!verifiedUser ? <UnVerifiedUser /> : <Navigate to='/' />} />
+          <Route path='/verifyEmail' element={!verifiedUser ? <EmailVerification /> : <Navigate to='/' />} />
           <Route path='*' element={<ErrorPage />} />
         </Routes>
       </ThemeProvider>

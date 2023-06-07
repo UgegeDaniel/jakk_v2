@@ -23,13 +23,6 @@ const questionReducers = {
       }
       return question;
     });
-    const answered = state.questions.filter((question) => question.userChoice);
-    const correct = answered.filter((question) => question.userChoice === question.answer);
-    state.result = {
-      attempted: answered.length,
-      correct: correct.length,
-      score: Number(((100 * correct.length) / state.questions.length)).toFixed(2)
-    };
     state.questions.forEach((question, index: number) => {
       if (question.questions_uid === id) {
         state.answeredQuestions.push(index);

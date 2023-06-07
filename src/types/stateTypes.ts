@@ -33,7 +33,7 @@ export interface Result {
   score: number | string;
 }
 
-interface QuestionType {
+export interface QuestionType {
   examtype: string;
   questions_uid: string;
   examYear: number;

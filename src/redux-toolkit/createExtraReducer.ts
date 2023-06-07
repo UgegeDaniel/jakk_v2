@@ -1,60 +1,12 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import StateType, { User } from '../types/stateTypes';
+import StateType from '../types/stateTypes';
 import { ActionReducerMapBuilder, AsyncThunk } from '@reduxjs/toolkit';
-
-const handleUserSuccess = (state: StateType, responseData: User) => {
-  localStorage.setItem('user', JSON.stringify(responseData));
-  state.notifications.push({ style: 'success', msg: 'Sign in successfully' });
-};
-
-const handleQuestionsSuccess = (state: StateType) => {
-  state.timer = true;
-  state.isModal = false;
-  state.testSubmitted = false;
-};
-
-const handleSaveScoreSuccess = (state: StateType) => {
-  state.testSubmitted = true;
-  state.timer = false;
-  state.isModal = true;
-};
-
-const handleVerificationNotification = (state: StateType) => {
-  state.showNotification = true;
-  state.notifications = [
-    { msg: 'Verification Email Sent Successfuly', style: 'success' },
-  ];
-};
-
-const onError = (
-  state: StateType,
-  responseError: string[] | string | undefined,
-) => {
-  const hasErrorMsg = state.notifications.find(
-    (notification) => notification.msg === responseError,
-  );
-  const errorIsArray = Array.isArray(responseError);
-  if (errorIsArray) {
-    state.notifications = responseError.map((msg) => ({
-      style: 'danger',
-      msg,
-    }));
-  }
-
-  if (!errorIsArray && !hasErrorMsg) {
-    state.notifications = [{ style: 'danger', msg: responseError }];
-  }
-  state.showNotification = true;
-};
-
-interface FulfilledAction<ThunkArg, PromiseResult> {
-  type: string;
-  payload: PromiseResult;
-  meta: {
-    requestId: string;
-    arg: ThunkArg;
-  };
-}
+import { FulfilledAction } from '../types/utilityTypes';
+import {
+  handleDataSuccess,
+  handleUserSuccess,
+  onError,
+} from './extraReducers/extraReducers';
 
 export const createExtraReducer = (
   builder: ActionReducerMapBuilder<StateType>,
@@ -72,10 +24,7 @@ export const createExtraReducer = (
       const { responseData, responseError } = action.payload;
       state.isLoading = false;
       if (!responseError) {
-        if (extraActions === 'verifyEmail')
-          handleVerificationNotification(state);
-        if (stateToUpdate === 'questions') handleQuestionsSuccess(state);
-        if (stateToUpdate === 'newScore') handleSaveScoreSuccess(state);
+        handleDataSuccess(state, responseData, stateToUpdate, extraActions);
       }
       if (responseData) {
         if (stateToUpdate === 'user') handleUserSuccess(state, responseData);
