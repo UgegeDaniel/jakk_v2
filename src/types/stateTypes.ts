@@ -8,6 +8,7 @@ export interface User {
   };
 }
 export interface UserHistory {
+  timeOfTtest: string;
   subject: string;
   timeOfTest: string;
   score: number;

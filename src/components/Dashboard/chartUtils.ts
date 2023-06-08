@@ -1,4 +1,3 @@
-// import { milliSecsToMoment } from '../../utils';
 import { ChartOptions, ChartData } from 'chart.js';
 import { chartColors, chartOptions, getChartLabels } from '../../utils';
 import { chartDataFxnType } from '../../types/utilityTypes';

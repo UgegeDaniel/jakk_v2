@@ -1,6 +1,6 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import { capitalizeFirstLetter, milliSecsToMoment } from '../../utils';
+import { capitalizeFirstLetter, formatTime } from '../../utils';
 import TableBody from './TableBody';
 import StateType from '../../types/stateTypes';
 
@@ -13,9 +13,10 @@ const UserHistoryTable = () => {
   const formatedHistory = userHistory.map((historyItem) => ({
     ...historyItem,
     subject: capitalizeFirstLetter(historyItem?.subject),
-    timeOfTest: milliSecsToMoment(historyItem.timeOfTest),
+    timeOfTest: formatTime(historyItem?.timeOfTtest),
     score: Number(historyItem.score)
   }));
+  console.log({ formatedHistory });
   return (
     <div className="table-responsive">
       <table className="table">
@@ -26,7 +27,7 @@ const UserHistoryTable = () => {
             ))}
           </tr>
         </thead>
-        <TableBody formatedHistory={formatedHistory}/>
+        <TableBody formatedHistory={formatedHistory} />
       </table>
     </div>
   );

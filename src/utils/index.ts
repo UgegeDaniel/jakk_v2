@@ -1,11 +1,13 @@
-import moment from 'moment';
+import { format } from 'date-fns';
 import { ChartOptions } from 'chart.js';
 import { UserHistory } from '../types/stateTypes';
 
 export const capitalizeFirstLetter = (word: string) =>
   word.charAt(0).toUpperCase() + word.slice(1);
-export const milliSecsToMoment = (ms: string) =>
-  moment(parseInt(ms, 10)).format('llll');
+export const formatTime = (milliseconds: string) => {
+  console.log({ milliseconds });
+  return format(new Date(Number(milliseconds)), 'dd MMMM yyyy HH:mm');
+};
 
 export const chartColors = [
   '#FFEAD2',
