@@ -16,7 +16,6 @@ const UserHistoryTable = () => {
     timeOfTest: formatTime(historyItem?.timeOfTtest),
     score: Number(historyItem.score)
   }));
-  console.log({ formatedHistory });
   return (
     <div className="table-responsive">
       <table className="table">
