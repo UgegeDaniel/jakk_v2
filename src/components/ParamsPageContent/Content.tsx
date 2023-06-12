@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { Card } from 'react-bootstrap';
 import ParamsModal from './ParamsModal';
-import Btn from '../Button/Button';
+import Button from '../Button/Button';
 import { useDispatch, useSelector } from 'react-redux';
 import { getQuestions } from '../../redux-toolkit/asyncMethods';
 import { resetQuestionState } from '../../redux-toolkit/features/questionSlice';
@@ -36,7 +36,7 @@ function TestParamsContent() {
         <span className='text-primary mr-1'> UTME </span> Examinations
       </Card.Title>
       <ParamsModal startTest={startTest} />
-      <Btn
+      <Button
         variant="primary"
         style="lg d-block my-2"
         onClick={startTest}

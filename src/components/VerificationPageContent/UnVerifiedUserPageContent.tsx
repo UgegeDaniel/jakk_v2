@@ -1,6 +1,6 @@
 import React from 'react';
 import { Card } from 'react-bootstrap';
-import Btn from '../Button/Button';
+import Button from '../Button/Button';
 import { useSelector, useDispatch } from 'react-redux';
 import { User } from '../../types/stateTypes';
 import { urls } from '../../utils/urls';
@@ -24,7 +24,7 @@ const UnVerifiedUserPageContent: React.FC = () => {
         <span className='text-primary ml-2'>
           {user.user.email}
         </span>
-        <Btn onClick={handleResendEmail} txt='Send Mail Again' style='d-block mx-auto my-2' />
+        <Button onClick={handleResendEmail} txt='Send Mail Again' style='d-block mx-auto my-2' />
       </Card.Text>
       {/* </Card.Body> */}
     </div>

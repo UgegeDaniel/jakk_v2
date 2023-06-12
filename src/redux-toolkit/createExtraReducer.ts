@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import StateType from '../types/stateTypes';
+import StateType, { Loading } from '../types/stateTypes';
 import { ActionReducerMapBuilder, AsyncThunk } from '@reduxjs/toolkit';
 import { FulfilledAction } from '../types/utilityTypes';
 import {
@@ -14,15 +14,15 @@ export const createExtraReducer = (
   stateToUpdate: string,
   extraActions?: string,
 ) => {
-  builder.addCase(asyncMethod.pending, (state: { isLoading: boolean }) => {
-    state.isLoading = true;
+  builder.addCase(asyncMethod.pending, (state: { loading: Loading }) => {
+    state.loading[stateToUpdate as keyof Loading] = true;
   });
 
   builder.addCase(
     asyncMethod.fulfilled,
     (state: StateType, action: FulfilledAction<any, any>) => {
       const { responseData, responseError } = action.payload;
-      state.isLoading = false;
+      state.loading[stateToUpdate as keyof Loading] = false;
       if (!responseError) {
         handleDataSuccess(state, responseData, stateToUpdate, extraActions);
       }
@@ -37,7 +37,7 @@ export const createExtraReducer = (
   builder.addCase(
     asyncMethod.rejected,
     (state: StateType, action: { payload: any }) => {
-      state.isLoading = false;
+      state.loading[stateToUpdate as keyof Loading] = false;
       state.notifications = [
         ...state.notifications,
         { style: 'danger', msg: action.payload },

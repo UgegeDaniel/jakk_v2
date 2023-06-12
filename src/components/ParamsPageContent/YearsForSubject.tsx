@@ -10,9 +10,9 @@ import styles from '../../styles';
 
 const YearsForSubject: React.FC<YearsForSubjectProps> = ({ subjectName }) => {
   const dispatch = useDispatch();
-  const { years, isLoading, testParams: { chosenYear } } = useSelector((state: StateType) => state);
+  const { years, loading, testParams: { chosenYear } } = useSelector((state: StateType) => state);
 
-  if (isLoading) return <Loader />;
+  if (loading.years) return <Loader />;
 
   if (years.length === 0) return (
     <div className="text-secondary">Sorry there are no questions for

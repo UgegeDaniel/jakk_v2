@@ -1,4 +1,4 @@
-import { Accordion, Container } from 'react-bootstrap';
+import { Accordion } from 'react-bootstrap';
 import { useSelector } from 'react-redux';
 import { capitalizeFirstLetter } from '../../utils';
 import ToggeleSubjectAccordion from './ToggeleSubjectAccordion';
@@ -11,8 +11,7 @@ interface SubjectSelectionProps {
   startTest: () => void
 }
 const SubjectsSelection: React.FC<SubjectSelectionProps> = ({ startTest }) => {
-  const { allSubjects } = useSelector((state: StateType) => state);
-  const { testParams } = useSelector((state: StateType) => state);
+  const { allSubjects, loading, testParams } = useSelector((state: StateType) => state);
   const { chosenYear, chosenSubject } = testParams;
 
   return (
@@ -30,6 +29,7 @@ const SubjectsSelection: React.FC<SubjectSelectionProps> = ({ startTest }) => {
               style="lg d-block my-2"
               onClick={startTest}
               txt='Proceed to Test'
+              isLoading={loading.questions}
             />}
         </ToggeleSubjectAccordion>
       ))}

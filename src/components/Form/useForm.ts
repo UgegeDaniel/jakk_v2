@@ -11,7 +11,11 @@ const useForm = (): UseFormProps => {
   const [validated, setValidated] = useState(false);
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const { isSignIn, formData } = useSelector((state: StateType) => state);
+  const {
+    isSignIn,
+    formData,
+    loading: { user },
+  } = useSelector((state: StateType) => state);
   const formik = useFormik({
     ...formParams(isSignIn, dispatch, navigate, formData),
   });
@@ -36,6 +40,7 @@ const useForm = (): UseFormProps => {
     toggleIsSignIn,
     validated,
     handleSubmit,
+    isLoading: user,
   };
 };
 

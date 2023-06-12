@@ -9,11 +9,11 @@ const CarouselText: React.FC<CarouselTextProps> = ({ content }) => {
       <figure className={styles.centerTxt}>
         <blockquote className="blockquote">
           <content.Icon className={styles.txtPri1} />
-          <p className="text-primary">{content.headerTxt}</p>
+          <p className="text-primary" style={{ fontSize: '1.5rem' }}>{content.headerTxt}</p>
         </blockquote>
         <Container className={styles.blockQuoteFooter}>
           <figcaption>
-            <cite style={{ lineHeight: 2, fontSize: '1.5 rem' }}>{content.body}</cite>
+            <cite style={{ lineHeight: 1, fontSize: '1.5rem' }}>{content.body}</cite>
           </figcaption>
         </Container>
       </figure>

@@ -23,6 +23,7 @@ const Form: React.FC = () => {
       <Button
         txt={formData.isSignIn ? 'Sign In' : 'Sign Up'}
         style='mt-2'
+        isLoading={formData.isLoading}
       />
     </BootstrapForm>
   );

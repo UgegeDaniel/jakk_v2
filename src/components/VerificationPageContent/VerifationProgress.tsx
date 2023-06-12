@@ -12,7 +12,7 @@ const EmailVerifationProgress: React.FC = () => {
   const searchParams = new URLSearchParams(location.search);
   const ref = searchParams.get('ref');
 
-  const { isLoading } = useSelector((state: StateType) => state);
+  const { loading } = useSelector((state: StateType) => state);
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -26,7 +26,7 @@ const EmailVerifationProgress: React.FC = () => {
         <Card.Title>Email Verification In Progress ...</Card.Title>
         <Card.Text>
           Please wait while we verify your Email
-          {isLoading && <Loader />}
+          {loading.user && <Loader />}
         </Card.Text>
       </Card.Body>
     </Card>

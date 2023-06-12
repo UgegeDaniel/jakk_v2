@@ -16,6 +16,7 @@ export interface ButtonProps {
   txt: string;
   style?: string;
   variant?: string;
+  isLoading?: boolean
 }
 
 export interface CarouselTextProps {
@@ -55,6 +56,7 @@ export interface UseFormProps {
   formik: ReturnType<typeof useFormik>;
   isSignIn: boolean;
   validated: boolean;
+  isLoading: boolean;
   toggleIsSignIn: () => void;
   handleSubmit: (event: React.FormEvent<HTMLFormElement>) => void;
 }

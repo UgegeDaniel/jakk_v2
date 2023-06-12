@@ -2,7 +2,7 @@ import { useSelector } from 'react-redux';
 import StateType from '../../types/stateTypes';
 
 const useQuestions = () => {
-  const { isLoading, currentIndex, questions, answeredQuestions } = useSelector((state: StateType) => state);
+  const { loading, currentIndex, questions, answeredQuestions } = useSelector((state: StateType) => state);
   const options = [
     questions[currentIndex]?.optiona,
     questions[currentIndex]?.optionb,
@@ -12,7 +12,7 @@ const useQuestions = () => {
   ];
 
   return {
-    isLoading,
+    isLoading: loading.questions,
     currentIndex,
     questions,
     options,

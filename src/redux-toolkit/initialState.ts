@@ -19,7 +19,14 @@ const initialState: StateType = {
   
   notifications: [],
   showNotification: false,
-  isLoading: false,
+  loading: {
+    user: false,
+    userHistory: false,
+    allSubjects: false,
+    questions: false,
+    years: false,
+    newScore: false,
+  },
   
   showError: false,
   

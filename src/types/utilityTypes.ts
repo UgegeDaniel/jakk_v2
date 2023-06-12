@@ -13,6 +13,7 @@ export type formDataType = {
   toggleIsSignIn: MouseEventHandler<HTMLSpanElement> | undefined;
   isSignIn: boolean;
   validated: boolean;
+  isLoading: boolean;
   handleSubmit: (event: React.FormEvent<HTMLFormElement>) => void;
 };
 

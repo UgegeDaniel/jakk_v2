@@ -22,6 +22,15 @@ export interface FormData {
   confirmPassword: string;
 }
 
+export interface Loading {
+  user: boolean,
+  userHistory: boolean,
+  allSubjects: boolean,
+  questions: boolean,
+  years: boolean,
+  newScore: boolean,
+}
+
 export interface TestParams {
   subjectId: string;
   chosenYear: string;
@@ -67,7 +76,7 @@ type StateType = {
 
   notifications: { msg: string | undefined; style: string }[];
   showNotification: boolean;
-  isLoading: boolean;
+  loading: Loading;
 
   showError: boolean;
 

@@ -10,7 +10,7 @@ import { AnyAction } from '@reduxjs/toolkit';
 import { ParamsModalProps } from '../../types/propTypes';
 
 const ParamsModal: React.FC<ParamsModalProps> = ({ startTest }) => {
-  const { allSubjects } = useSelector((state: StateType) => state);
+  const { allSubjects, loading } = useSelector((state: StateType) => state);
   const dispatch = useDispatch();
   const fetchSubjects = () => {
     dispatch(getAllSubjects(urls.getAllSubjects) as unknown as AnyAction);
@@ -22,7 +22,10 @@ const ParamsModal: React.FC<ParamsModalProps> = ({ startTest }) => {
 
   const NoSubjects = () => <div className="text-danger lead font-weight-bold">
     Couldn&apos;t fetch Subjects
-    <Button onClick={fetchSubjects} txt="Try Again" style="mx-2 btn-sm d-block" />
+    <Button
+      onClick={fetchSubjects} txt="Try Again" style="mx-2 btn-sm d-block"
+      isLoading={loading.allSubjects}
+    />
   </div>;
 
   return (
