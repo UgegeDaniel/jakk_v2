@@ -1,4 +1,5 @@
 import React from 'react';
+import { NavDropdown } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import NavItem from './NavItem';
 import Button from '../Button/Button';
@@ -23,6 +24,9 @@ const NavItems: React.FC<NavItemsProps> = ({ style, fontSize, handleToggleSideba
           handleToggleSidebar={handleToggleSidebar}
         />
       ))}
+      <NavDropdown title="Pro Features" id="basic-nav-dropdown">
+        <NavDropdown.Item>Join A Class</NavDropdown.Item>
+      </NavDropdown>
       {user && (
         <Button
           txt="Sign Out"
