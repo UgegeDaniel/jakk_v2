@@ -4,7 +4,7 @@ import { useLocation } from 'react-router-dom';
 import { NavItemProps } from '../../types/propTypes';
 
 const NavItem: React.FC<NavItemProps> = (props) => {
-  const { link, Icon, linkTxt, fontSize, handleToggleSidebar } = props;
+  const { link, Icon, linkTxt, fontSize, handleToggleSidebar, dropDown } = props;
   const location = useLocation();
   const isCuurentPage = link === location.pathname;
   const currentLinkStyle = isCuurentPage
@@ -18,7 +18,7 @@ const NavItem: React.FC<NavItemProps> = (props) => {
       onClick={handleToggleSidebar}
     >
       <Link to={link}
-        className={`mr-2 font-weight-bold text-white ${currentLinkTxtStyle}`}
+        className={`mr-2 font-weight-bold ${dropDown ? 'text-dark' : 'text-white'} ${currentLinkTxtStyle}`}
         style={{
           textDecoration: 'none',
           cursor: 'pointer'

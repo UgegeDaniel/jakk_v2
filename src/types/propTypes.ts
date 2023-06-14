@@ -75,6 +75,7 @@ export interface NavItemProps {
   linkTxt: string;
   fontSize?: string;
   handleToggleSidebar: () => void;
+  dropDown?: boolean;
 }
 
 export interface NavBarTextProps {

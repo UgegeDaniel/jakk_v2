@@ -13,20 +13,34 @@ const NavItems: React.FC<NavItemsProps> = ({ style, fontSize, handleToggleSideba
   const { user } = useSelector((state: StateType) => state);
 
   return (
-    <div className={`${style} justify-content-center align-items-center`}>
-      {user?.user.verified && navigations.map((navItem, index) => (
-        <NavItem
+    <div className={`${style}`}>
+      {user?.user.verified && navigations.map((navItem, index) => {
+        if (Array.isArray(navItem)) {
+          return (<NavDropdown title="App Features" style={{ display: 'inline-block' }}>
+            {navItem.map((dropdownItem) => <NavDropdown.Item bg="dark">
+              <NavItem
+                key={index}
+                link={dropdownItem.link}
+                Icon={dropdownItem.Icon}
+                linkTxt={dropdownItem.linkTxt}
+                fontSize={fontSize}
+                handleToggleSidebar={handleToggleSidebar}
+                dropDown={true}
+              />
+            </NavDropdown.Item>
+            )}
+          </NavDropdown>
+          );
+        }
+        if (!Array.isArray(navItem)) return (<NavItem
           key={index}
           link={navItem.link}
           Icon={navItem.Icon}
           linkTxt={navItem.linkTxt}
           fontSize={fontSize}
           handleToggleSidebar={handleToggleSidebar}
-        />
-      ))}
-      <NavDropdown title="Pro Features" id="basic-nav-dropdown">
-        <NavDropdown.Item>Join A Class</NavDropdown.Item>
-      </NavDropdown>
+        />);
+      })}
       {user && (
         <Button
           txt="Sign Out"

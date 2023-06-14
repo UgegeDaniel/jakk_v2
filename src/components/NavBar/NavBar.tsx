@@ -35,7 +35,7 @@ const NavBar: React.FC = () => {
         {!isSmallScreen && user && (
           <Nav className="mr-0">
             <NavItems
-              style={'flex-row align-items-center justify-content-center'}
+              style={''}
               handleToggleSidebar={() => setSidebarOpen(!sidebarOpen)}
             />
           </Nav>
